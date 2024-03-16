@@ -2,7 +2,8 @@
 
 <h1>Login</h1>
 
-<form action="" method="post">
+<form action="{{ route('login_submit') }}" method="post">
+    @csrf
     <div>Email Address</div>
     
     <div>

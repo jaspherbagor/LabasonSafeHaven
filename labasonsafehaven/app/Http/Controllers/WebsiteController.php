@@ -24,6 +24,27 @@ class WebsiteController extends Controller
         return view('login');
     }
 
+    public function logout()
+    {
+        Auth::guard('web')->logout();
+        return redirect()->route('login');
+    }
+
+    public function loginSubmit(Request $request) {
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password,
+            'status' => 'Active'
+        ];
+
+        if(Auth::attempt($credentials)) {
+            return redirect()->route('dashboard');
+        } else {
+            return redirect()->route('login');
+        }
+
+    }
+
     public function registration() {
         return view('registration');
     }
