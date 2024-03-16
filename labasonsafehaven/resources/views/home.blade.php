@@ -1,7 +1,4 @@
-<a href="{{ route('home') }}">Home</a> -
-<a href="{{ route('dashboard') }}">Dashboard</a> -
-<a href="">Login</a> -
-<a href="">Register</a> -
-<a href="">Logout</a>
+@include('nav')
+<h1>Home</h1>
 
 <h3>Welcome to home page</h3>

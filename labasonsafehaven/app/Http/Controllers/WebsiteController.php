@@ -15,4 +15,16 @@ class WebsiteController extends Controller
     {
         return view('dashboard');
     }
+
+    public function login() {
+        return view('login');
+    }
+
+    public function registration() {
+        return view('registration');
+    }
+
+    public function forgetPassword() {
+        return view('forget_password');
+    }
 }
