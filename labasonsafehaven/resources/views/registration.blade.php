@@ -2,7 +2,7 @@
 
 <h1>Registration</h1>
 
-<form action="" method="post">
+<form action="{{ route('registration_submit') }}" method="post"> @csrf
     <div>Name</div>
     
     <div>
