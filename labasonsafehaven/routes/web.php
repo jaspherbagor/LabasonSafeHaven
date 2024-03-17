@@ -32,6 +32,8 @@ Route::post('/reset-password-submit', [WebsiteController::class, 'resetPasswordS
 /* Admin */
 Route::get('admin/login', [AdminController::class, 'login'])->name('admin_login');
 
+Route::post('/admin/login-submit', [AdminController::class, 'loginSubmit'])->name('admin_login_submit');
+
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('dashboard_admin')->middleware('admin_dashboard');
 
 Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin_settings')->middleware('admin');

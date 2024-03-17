@@ -18,7 +18,7 @@ class WebsiteController extends Controller
 
     public function dashboardUser()
     {
-        return view('dashboard_user');
+        return view('dashboard');
     }
 
     public function dashboardAdmin()
