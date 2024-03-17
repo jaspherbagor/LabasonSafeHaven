@@ -8,7 +8,9 @@ Route::get('/', [WebsiteController::class, 'index'])->name('home');
 
 Route::get('/dashboard-user', [WebsiteController::class, 'dashboardUser'])->name('dashboard_user')->middleware('auth');
 
-Route::get('/dashboard-admin', [WebsiteController::class, 'DashboardAdmin'])->name('dashboard_admin');
+Route::get('/dashboard-admin', [WebsiteController::class, 'DashboardAdmin'])->name('dashboard_admin')->middleware('admin');
+
+Route::get('/settings', [WebsiteController::class, 'settings'])->name('settings')->middleware('admin');
 
 
 Route::get('/login', [WebsiteController::class, 'login'])->name('login');

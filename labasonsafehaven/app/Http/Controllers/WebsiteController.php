@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class WebsiteController extends Controller
 {
@@ -15,9 +16,14 @@ class WebsiteController extends Controller
         return view('home');
     }
 
-    public function dashboard()
+    public function dashboardUser()
     {
-        return view('dashboard');
+        return view('dashboard_user');
+    }
+
+    public function dashboardAdmin()
+    {
+        return view('dashboard_admin');
     }
 
     public function settings()
@@ -43,7 +49,13 @@ class WebsiteController extends Controller
         ];
 
         if(Auth::attempt($credentials)) {
-            return redirect()->route('dashboard');
+
+            if(Auth::guard('web')->user()->role == 1) {
+                return redirect()->route('dashboard_admin');
+            } else {
+                return redirect()->route('dashboard_user');
+            }
+
         } else {
             return redirect()->route('login');
         }
@@ -71,7 +83,7 @@ class WebsiteController extends Controller
         $subject = 'Registration Confirmation';
         $message = 'Thank you for registering an account. to verify your account, please click the link: <br> <a href="'.$verificationLink.'">Click Here</a>';
 
-        \Mail::to($request->email)->send(new WebsiteMail($subject, $message));
+        Mail::to($request->email)->send(new WebsiteMail($subject, $message));
 
         echo 'Email is sent';
     }
@@ -114,7 +126,7 @@ class WebsiteController extends Controller
         $subject = 'Reset Password';
         $message = 'Please click on the link to reset your password. <br> <a href="'.$resetLink.'">Click Here</a>';
 
-        \Mail::to($request->email)->send(new WebsiteMail($subject, $message));
+        Mail::to($request->email)->send(new WebsiteMail($subject, $message));
 
         echo 'Check your email';
        
