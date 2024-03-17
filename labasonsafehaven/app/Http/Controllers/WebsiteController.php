@@ -20,6 +20,11 @@ class WebsiteController extends Controller
         return view('dashboard');
     }
 
+    public function settings()
+    {
+        return view('settings');
+    }
+
     public function login() {
         return view('login');
     }
