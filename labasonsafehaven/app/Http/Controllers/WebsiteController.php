@@ -59,6 +59,7 @@ class WebsiteController extends Controller
         $user->password  = Hash::make($request->password);
         $user->status  = 'Pending';
         $user->token = $token;
+        $user->role = 2;
         $user->save();
 
         $verificationLink = url('registration/verify/'.$token.'/'.$request->email);
@@ -125,6 +126,14 @@ class WebsiteController extends Controller
     }
 
     public function resetPasswordSubmit(Request $request) {
-        echo $request->token;
+        $user = User::where('token', $request->token)->where('email', $request->email)->first();
+
+        $user->token = '';
+        
+        $user->password  = Hash::make($request->new_password);
+
+        $user->update();
+
+        echo 'Password has been successfully reset';
     }
 }
