@@ -4,10 +4,11 @@
 
 <form action="{{ route('forget_password_submit') }}" method="post">
     @csrf
+
     <div>Email Address</div>
     
     <div>
-        <input type="text" name="email">
+        <input type="email" name="email">
     </div>
     
     <br>

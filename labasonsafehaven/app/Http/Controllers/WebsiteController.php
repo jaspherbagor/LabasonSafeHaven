@@ -103,7 +103,7 @@ class WebsiteController extends Controller
         $user->token = $token;
         $user->update();
 
-        $resetLink = url('reset-password'.$token.'/'.$request->email);
+        $resetLink = url('reset-password/'.$token.'/'.$request->email);
 
         $subject = 'Reset Password';
         $message = 'Please click on the link to reset your password. <br> <a href="'.$resetLink.'">Click Here</a>';
@@ -112,5 +112,19 @@ class WebsiteController extends Controller
 
         echo 'Check your email';
        
+    }
+
+    public function resetPassword($token, $email) {
+        $user = User::where('token', $token)->where('email', $email)->first();
+
+        if(!$user) {
+            return redirect()->route('login');
+        }
+
+        return view('reset_password', compact('token', 'email'));
+    }
+
+    public function resetPasswordSubmit(Request $request) {
+        echo $request->token;
     }
 }

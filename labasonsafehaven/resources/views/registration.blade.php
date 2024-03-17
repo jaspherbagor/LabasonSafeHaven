@@ -23,7 +23,7 @@
     <div>Confirm Password</div>
     
     <div>
-        <input type="password" name="confirmpassword">
+        <input type="password" name="confirm_password">
     </div>
     <br>
     <div>
