@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
 
-    <link rel="icon" type="image/png" href="uploads/favicon.png">
+    <link rel="icon" type="image/png" href="{{ asset('uploads/favicon.png') }}">
 
     <title>Admin Panel</title>
 
@@ -64,7 +64,7 @@
                     <a href="" target="_blank" class="btn btn-warning">Front End</a>
                 </li>
                 <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                    <img alt="image" src="uploads/user.jpg" class="rounded-circle mr-1">
+                    <img alt="image" src="{{ asset('uploads/user.jpg') }}" class="rounded-circle mr-1">
                     <div class="d-sm-none d-lg-inline-block">John Doe</div></a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a href="profile.html" class="dropdown-item has-icon">
@@ -116,7 +116,10 @@
         <div class="main-content">
             <section class="section">
                 <div class="section-header">
-                    <h1>Dashboard</h1>
+                    <h1>@yield('heading')</h1>
+                    <div class="ml-auto">
+                        <a href="" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-6 col-12">
