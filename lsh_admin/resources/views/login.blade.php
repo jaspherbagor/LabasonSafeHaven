@@ -45,12 +45,15 @@
             </div>
 
             <div class="text-center mt-4">
-                <p class="text-white">
+                <p class="text-white py-0 my-0">
                     Don't have an account yet?
                     <a href="{{ route('register') }}" class="text-decoration-none register-link fw-semibold">
                       Create  
                     </a>
                     an account.
+                </p>
+                <p class="py-0 my-0">
+                    <a href="" class="text-decoration-none forgot-password-link">Forgot Password</a>
                 </p>
             </div>
         </form>
