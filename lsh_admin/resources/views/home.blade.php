@@ -152,7 +152,7 @@
                     <div class="card-footer text-center bg-none px-2">
                         <h5 class="card-text mt-2 text-start">Ember's House</h5>
                         <h6 class="card-text mb-3 text-start room-price fw-semibold">₱6000 per month</h6>
-                        <a href="" type="button" class="btn w-100 view-accommodation-btn">See Detail</a>
+                        <a href="" type="button" class="btn w-100 view-accommodation-btn">See Room</a>
                     </div>
                 </div>
             </div>
@@ -162,7 +162,7 @@
                     <div class="card-footer text-center bg-none px-2">
                         <h5 class="card-text mt-2 text-start room-name">Bayangan Hotel VIP Room</h5>
                         <h6 class="card-text mb-3 text-start room-price fw-semibold">₱1500 per night</h6>
-                        <a href="" type="button" class="btn w-100 view-accommodation-btn">See Detail</a>
+                        <a href="" type="button" class="btn w-100 view-accommodation-btn">See Room</a>
                     </div>
                 </div>
             </div>
@@ -172,7 +172,7 @@
                     <div class="card-footer text-center bg-none px-2">
                         <h5 class="card-text mt-2 text-start room-name">Maravillas Boarding House</h5>
                         <h6 class="card-text mb-3 text-start room-price fw-semibold">₱2500 per month</h6>
-                        <a href="" type="button" class="btn w-100 view-accommodation-btn">See Detail</a>
+                        <a href="" type="button" class="btn w-100 view-accommodation-btn">See Room</a>
                     </div>
                 </div>
             </div>
