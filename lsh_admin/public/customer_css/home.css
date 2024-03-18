@@ -94,6 +94,10 @@ html, body {
     text-overflow: ellipsis;
 }
 
+.room-price {
+    color:var(--primary-color)
+}
+
 .all-accommodations-btn {
     background-color: var(--primary-color);
 }
