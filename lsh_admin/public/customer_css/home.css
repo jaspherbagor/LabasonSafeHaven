@@ -25,7 +25,12 @@ html, body {
     --sample-navbar-bg: #eae7e2;
     --text-color-light: #ffffff;
     --text-color-dark: #202020;
+    --feature-section-bg: #f0f0f0;
     --font-family: 'Montserrat', sans-serif;
+}
+
+.hero-section {
+    z-index: -1
 }
 
 .carousel-prev-btn:hover, .carousel-next-btn:hover {
@@ -38,4 +43,27 @@ html, body {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-  }
+}
+
+.form-search-container {
+    z-index: 500 !important;
+    margin-top: -15px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.book-now-btn {
+    background: var(--primary-color)
+}
+
+.book-now-btn:hover {
+    background: var(--button-hover)
+}
+
+.feature-section {
+    background: var(--feature-section-bg)
+}
+
+.feature-icon {
+    color:var(--primary-color)
+}

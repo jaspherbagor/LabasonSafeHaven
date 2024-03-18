@@ -10,6 +10,18 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    {{-- Date Picker Start --}}
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Bootstrap Datepicker CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+        <!-- Bootstrap Datepicker JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+    {{-- Date Picker End --}}
+
     <link rel="stylesheet" href="{{ asset('customer_css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('customer_css/nav.css') }}">
 </head>
@@ -17,5 +29,23 @@
     @yield('nav')
     @yield('content')
     @yield('footer')
+
+    {{-- Date Picker Script --}}
+    <script>
+        $(document).ready(function(){
+            $('#dateRangePicker').datepicker({
+                format: "mm/dd/yyyy",
+                clearBtn: true,
+                todayBtn: true,
+                autoclose: true,
+                todayHighlight: true,
+                startDate: "today",
+                endDate: '+1y',
+                multidate: true, // Allow selection of multiple dates
+                multidateSeparator: " - " // Separator between dates
+            });
+        });
+    </script>
+    {{-- Date Pucker Script End --}}
 </body>
 </html>
