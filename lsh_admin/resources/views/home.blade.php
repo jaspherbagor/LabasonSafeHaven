@@ -56,7 +56,7 @@
             <div class="form-group row aling-items-center justify-content-center">
                 <div class="col-md-3 col-sm-6 col-12 mb-md-0 mb-3">
                     <select class="form-control me-2 search-input-element" id="exampleFormControlSelect2">
-                        <option>Select Property</option>
+                        <option>Select Accommodation</option>
                         <option>Hotel</option>
                         <option>Apartment</option>
                         <option>Boarding House</option>
@@ -77,13 +77,13 @@
             </div>
         </form>
     </section>
-    <section class="feature-section container-fluid px-4 py-5 text-center d-flex align-items-center justify-content-center">
+    <section class="feature-section container-fluid px-md-4 px-2 py-5 text-center d-flex align-items-center justify-content-center">
         <div class="row d-flex align-items-center justify-content-center text-center mt-5">
             <div class="description-box col-lg-3 col-md-3 col-sm-6 text-center mb-4  p-2">
                 <div class="col-md-12 d-flex align-items-center justify-content-center">
                     <i class="bi bi-clock-history feature-icon px-4 py-2 display-1"></i>
                 </div>
-                <h3 class="fw-medium text-center">Flexible Check-in/Check-out</h3>
+                <h4 class="fw-medium text-center">Flexible Check-in/Check-out</h4>
                 <p class="text-center">Customize arrival and departure times for convenience</p>
                 
             </div>
@@ -91,14 +91,14 @@
                 <div class="col-md-12 d-flex align-items-center justify-content-center">
                     <i class="bi bi-compass feature-icon px-4 py-2 display-1"></i>
                 </div>
-                <h3 class="fw-medium text-center">Local Experience Recommendations</h3>
+                <h4 class="fw-medium text-center">Local Experience Recommendations</h4>
                 <p class="text-center">Discover nearby attractions and dining with personalized tips</p>
             </div>
             <div class="description-box col-lg-3 col-md-3 col-sm-6 text-center mb-4 p-2">
                 <div class="col-md-12 d-flex align-items-center justify-content-center">
                     <i class="bi bi-globe feature-icon px-4 py-2 display-1"></i>
                 </div>
-                <h3 class="fw-medium text-center">Multi-lingual Support</h3>
+                <h4 class="fw-medium text-center">Multi-lingual Support</h4>
                 <p class="text-center">Booking and support available in multiple languages</p>
 
             </div>
@@ -106,11 +106,140 @@
                 <div class="container d-flex align-items-center justify-content-center">
                     <i class="bi bi-credit-card feature-icon px-4 py-2 display-1"></i>
                 </div>
-                <h3 class="fw-medium text-center">Secure Payment Options</h3>
+                <h4 class="fw-medium text-center">Secure Payment Options</h4>
                 <p class="text-center">Safe and diverse payment methods for convenience</p>
             </div>
         </div>
     </section>
+    <section class="properties-section container-fluid px-md-4 px-2 py-5 d-flex align-items-center justify-content-center">
+        <div class="row container">
+            <h2 class="text-center fw-semibold mb-5">Accommodation Options</h2>
+            <div class="col-md-4 col-sm-6">
+                <div class="card w-100 mb-4 accomodation-card">
+                    <img src="{{ asset('home_images/image-10.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-footer text-center bg-none">
+                        <h4 class="card-text mb-3 mt-2">Hotel</h4>
+                        <a href="" type="button" class="btn w-100 view-accommodation-btn">See Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="card w-100 mb-4 accomodation-card">
+                    <img src="{{ asset('home_images/image-11.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-footer text-center bg-none">
+                        <h4 class="card-text mb-3 mt-2">Apartment</h4>
+                        <a href="" type="button" class="btn w-100 view-accommodation-btn">See Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="card w-100 mb-4 accomodation-card">
+                    <img src="{{ asset('home_images/image-8.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-footer text-center bg-none">
+                        <h4 class="card-text mb-3 mt-2">Boarding House</h4>
+                        <a href="" type="button" class="btn w-100 view-accommodation-btn">See Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="featured-rooms container-fluid px-md-4 px-2 py-5 d-flex align-items-center justify-content-center">
+        <div class="row container-fluid px-md-4 px-1">
+            <h2 class="text-center fw-semibold mb-5">Featured Accommodation Rooms</h2>
+            <div class="col-md-3 col-sm-6">
+                <div class="card w-100 mb-4 featured-rooms-card">
+                    <img src="{{ asset('home_images/image-9.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-footer text-center bg-none px-2">
+                        <h5 class="card-text mt-2 text-start">Ember's House</h5>
+                        <h6 class="card-text mb-3 text-start room-price fw-semibold">₱6000 per month</h6>
+                        <a href="" type="button" class="btn w-100 view-accommodation-btn">See Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="card w-100 mb-4 featured-rooms-card">
+                    <img src="{{ asset('home_images/image-10.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-footer text-center bg-none px-2">
+                        <h5 class="card-text mt-2 text-start room-name">Bayangan Hotel VIP Room</h5>
+                        <h6 class="card-text mb-3 text-start room-price fw-semibold">₱1500 per night</h6>
+                        <a href="" type="button" class="btn w-100 view-accommodation-btn">See Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="card w-100 mb-4 featured-rooms-card">
+                    <img src="{{ asset('home_images/image-8.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-footer text-center bg-none px-2">
+                        <h5 class="card-text mt-2 text-start room-name">Maravillas Boarding House</h5>
+                        <h6 class="card-text mb-3 text-start room-price fw-semibold">₱2500 per month</h6>
+                        <a href="" type="button" class="btn w-100 view-accommodation-btn">See Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="card w-100 mb-4 featured-rooms-card">
+                    <img src="{{ asset('home_images/image-2.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-footer text-center bg-none px-2 room-card-body">
+                        <h5 class="card-text mt-2 text-start room-name">Abetom Apartment</h5>
+                        <h6 class="card-text mb-3 text-start room-price fw-semibold">₱3600 per month</h6>
+                        <a href="" type="button" class="btn w-100 view-accommodation-btn">See Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="" class="btn all-accommodations-btn py-2">See All Rooms</a>
+            </div>
+        </div>
+    </section>
+    <section class="client-review bg-success container-fluid px-3 py-4 text-center h-auto">
+        <h2 class="text-center fw-semibold">Client Reviews</h2>
+        <div id="carouselExampleIndicators" class="carousel slide mb-4 mt-3 px-2" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="carousel-text text-center">
+                        <img src="" alt="">
+                        <h5>Name</h5>
+                        <h5>Position</h5>
+                        <h4 class="fw-medium text-white">
+                            "What a wonderful stay! The staff at Labason Safe Haven made me feel right at home. The rooms were clean, and the surroundings were so serene – it was truly a dream come true! Can't wait to return for another relaxing getaway"
+                        </h4>
+                        <h5 class="fw-bold mb-5 mt-4 text-warning">Olivia Chen</h5>
+                    </div>
+                </div>
+                <div class="carousel-item active">
+                    <div class="carousel-text">
+                        
+                        <h4 class="fw-medium text-white">
+                            "Labason Safe Haven exceeded all my expectations! From the friendly staff to the cozy rooms, every detail was perfect. It felt like a home away from home, and I can't wait to recommend it to all my friends!"
+                        </h4>
+                        <h5 class="fw-bold mb-5 mt-4 text-warning">Olivia Chen</h5>
+                    </div>
+                </div>
+                <div class="carousel-item active">
+                    <div class="carousel-text">
+                        
+                        <h4 class="fw-medium text-white fst-italic">
+                            "My stay at Labason Safe Haven was absolutely delightful! The staff were incredibly welcoming, and the atmosphere was so peaceful. I left feeling completely refreshed and already planning my next visit. Highly recommend for anyone seeking a relaxing retreat!"
+                        </h4>
+                        <h5 class="fw-bold mb-5 mt-4 text-warning">Olivia Chen</h5>
+                    </div>
+                </div>
+            {{-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button> --}}
+          </div>
+    </section>
+
     
     @include('layout.footer')
 @endsection

@@ -67,3 +67,37 @@ html, body {
 .feature-icon {
     color:var(--primary-color)
 }
+
+.view-accommodation-btn {
+    background: var(--primary-color)
+}
+
+.view-accommodation-btn:hover {
+    background: var(--button-hover)
+}
+
+.accomodation-card, .featured-rooms-card {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.accomodation-card:hover, .featured-rooms-card:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.featured-rooms {
+    background: var(--feature-section-bg)
+}
+
+.room-name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.all-accommodations-btn {
+    background-color: var(--primary-color);
+}
+
+.all-accommodations-btn:hover {
+    background-color: var(--button-hover);
+}
