@@ -239,6 +239,41 @@
               </button>
           </div>
     </section>
+    <section class="blog-section container-fluid px-md-4 px-2 py-5 d-flex align-items-center justify-content-center">
+        <div class="row container">
+            <h2 class="text-center fw-semibold mb-5">Latest Posts</h2>
+            <div class="col-md-4 col-sm-6">
+                <div class="card w-100 mb-4 accomodation-card">
+                    <img src="{{ asset('home_images/blog-img-1.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-footer text-start bg-none">
+                        <h4 class="card-text mb-3 mt-2">Hidden Gems: Explore Unique Escapes</h4>
+                        <p class="card-text mb-3">Discover off-the-beaten-path destinations and hidden treasures for unforgettable travel experiences that go beyond the ordinary tourist spots.</p>
+                        <a href="" type="button" class="btn w-100 view-accommodation-btn">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="card w-100 mb-4 accomodation-card">
+                    <img src="{{ asset('home_images/blog-img-2.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-footer text-start bg-none">
+                        <h4 class="card-text mb-3 mt-2">Packing Tips: Stress-Free Travel</h4>
+                        <p class="card-text mb-3">Master the art of packing with expert advice and practical tips to streamline your travel preparations and ensure a hassle-free journey.</p>
+                        <a href="" type="button" class="btn w-100 view-accommodation-btn">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="card w-100 mb-4 accomodation-card">
+                    <img src="{{ asset('home_images/blog-img-3.webp') }}" class="card-img-top" alt="...">
+                    <div class="card-footer text-start bg-none">
+                        <h4 class="card-text mb-3 mt-2">Foodie Finds: Global Culinary Adventures</h4>
+                        <p class="card-text mb-3">Embark on a gastronomic journey around the globe as we delve into cuisines, recipes, and culinary delights from different cultures.</p>
+                        <a href="" type="button" class="btn w-100 view-accommodation-btn">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     
     @include('layout.footer')
