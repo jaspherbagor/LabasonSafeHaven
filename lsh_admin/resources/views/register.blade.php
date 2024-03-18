@@ -15,7 +15,7 @@
                 <form action="#" method="post" id="registrationForm">@csrf
                     <div class="row">
                         <div class="col-md-12 mb-3">
-                            <label for="name">Full Name</label>
+                            <label for="name">Name</label>
                             <input type="text" name="name" class="form-control">
                             @if ($errors->has('name'))
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
@@ -28,6 +28,16 @@
                             <input type="email" name="email" class="form-control">
                             @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" class="form-control">
+                            @if ($errors->has('username'))
+                                <span class="text-danger">{{ $errors->first('username') }}</span>
                             @endif
                         </div>
                     </div>
