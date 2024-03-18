@@ -117,3 +117,11 @@ html, body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+.carousel-text {
+    text-shadow: 1px 1px 50px var(--text-color-dark) !important;
+}
+
+.rate-icon {
+    color:var(--primary-color) !important
+}

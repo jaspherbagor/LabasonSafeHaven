@@ -182,7 +182,7 @@
                     <div class="card-footer text-center bg-none px-2 room-card-body">
                         <h5 class="card-text mt-2 text-start room-name">Abetom Apartment</h5>
                         <h6 class="card-text mb-3 text-start room-price fw-semibold">₱3600 per month</h6>
-                        <a href="" type="button" class="btn w-100 view-accommodation-btn">See Detail</a>
+                        <a href="" type="button" class="btn w-100 view-accommodation-btn">See Room</a>
                     </div>
                 </div>
             </div>
@@ -191,7 +191,7 @@
             </div>
         </div>
     </section>
-    <section class="client-review bg-success container-fluid px-3 py-4 text-center">
+    <section class="client-review container-fluid px-3 py-4 text-center">
         <h2 class="text-center fw-semibold mb-5 mt-5 text-white pb-4">Client Reviews</h2>
 
           <div id="carouselExampleIndicators" class="carousel slide carousel-fade px-4" data-bs-ride="carousel">
@@ -199,7 +199,14 @@
               <div class="carousel-item active">
                 <div class="carousel-text text-white">
                     <img src="{{ asset('home_images/woman-img-1.jpg') }}" alt=".." class="review-img">
-                    <h5 class="mt-4 mb-2">Sarah Johnson</h5>
+                    <div class="mt-4">
+                        <i class="bi bi-star-fill fs-2 rate-icon"></i>
+                        <i class="bi bi-star-fill fs-2 rate-icon"></i>
+                        <i class="bi bi-star-fill fs-2 rate-icon"></i>
+                        <i class="bi bi-star-fill fs-2 rate-icon"></i>
+                        <i class="bi bi-star-fill fs-2 rate-icon"></i>
+                    </div>
+                    <h5 class="mt-2 mb-2">Sarah Johnson</h5>
                     <h6 class="mb-4">Marketing Consultant</h6>
                     <h4 class="fw-medium mb-5 pb-4">
                         "What a wonderful stay! The staff at Labason Safe Haven made me feel right at home. The rooms were clean, and the surroundings were so serene – it was truly a dream come true! Can't wait to return for another relaxing getaway"
@@ -209,7 +216,14 @@
               <div class="carousel-item">
                 <div class="carousel-text text-white">
                     <img src="{{ asset('home_images/guy-img.jpg') }}" alt=".." class="review-img">
-                    <h5 class="mt-4 mb-2">John Smith</h5>
+                    <div class="mt-4">
+                        <i class="bi bi-star-fill fs-2 rate-icon"></i>
+                        <i class="bi bi-star-fill fs-2 rate-icon"></i>
+                        <i class="bi bi-star-fill fs-2 rate-icon"></i>
+                        <i class="bi bi-star-fill fs-2 rate-icon"></i>
+                        <i class="bi bi-star-fill fs-2 rate-icon"></i>
+                    </div>
+                    <h5 class="mt-2 mb-2">John Smith</h5>
                     <h6 class="mb-4">Software Engineer</h6>
                     <h4 class="fw-medium mb-5 pb-4">
                         "Labason Safe Haven exceeded all my expectations! From the friendly staff to the cozy rooms, every detail was perfect. It felt like a home away from home, and I can't wait to recommend it to all my friends!"
@@ -220,7 +234,14 @@
                 <div class="carousel-text">
                     <div class="carousel-text text-white">
                         <img src="{{ asset('home_images/woman-img-2.jpg') }}" alt=".." class="review-img">
-                        <h5 class="mt-4 mb-2">Emily Davidson</h5>
+                        <div class="mt-4">
+                            <i class="bi bi-star-fill fs-2 rate-icon"></i>
+                            <i class="bi bi-star-fill fs-2 rate-icon"></i>
+                            <i class="bi bi-star-fill fs-2 rate-icon"></i>
+                            <i class="bi bi-star-fill fs-2 rate-icon"></i>
+                            <i class="bi bi-star-fill fs-2 rate-icon"></i>
+                        </div>
+                        <h5 class="mt-2 mb-2">Emily Davidson</h5>
                         <h6 class="mb-4">Teacher</h6>
                         <h4 class="fw-medium mb-5 pb-4">
                             "My stay at Labason Safe Haven was absolutely delightful! The staff were incredibly welcoming, and the atmosphere was so peaceful. I left feeling completely refreshed and already planning my next visit. Highly recommend for anyone seeking a relaxing retreat!"
