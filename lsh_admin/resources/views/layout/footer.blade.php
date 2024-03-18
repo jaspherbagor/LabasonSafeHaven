@@ -85,7 +85,7 @@
     </div>
 </section>
 <div class="text-center bg-dark py-3">
-    <p class="text-white my-auto">Copyright 2024. Labason Safe Haven. All rights Reserved.</p>
+    <p class="text-white my-auto">© Copyright 2024. Labason Safe Haven. All rights Reserved.</p>
 </div>
 <a href="#" id="back-to-top" class="position-fixed">
     <i class="bi bi-arrow-up-circle-fill text-white fs-1 back-to-top-icon"></i>
