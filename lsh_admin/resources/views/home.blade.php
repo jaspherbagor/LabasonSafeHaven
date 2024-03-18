@@ -51,7 +51,7 @@
             </button>
         </div>
     </section>
-    <section class="form-search-container container p-3  position-absolute bg-white">
+    <section class="form-search-container container p-4 position-absolute bg-white">
         <form action="">
             <div class="form-group row aling-items-center justify-content-center">
                 <div class="col-md-3 col-sm-6 col-12 mb-md-0 mb-3">
