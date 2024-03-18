@@ -54,8 +54,8 @@
                     </li>
                 </ul>
                 <div class="d-flex ms-auto">
-                    <button class="btn login-btn me-3" type="submit">Login</button>
-                    <button class="btn register-btn" type="submit">Register</button>
+                    <a href="{{ route('login') }}" class="btn login-btn me-3">Login</a>
+                    <a href="{{ route('register') }}" class="btn register-btn">Register</a>
                 </div>
             </div>
         </div>

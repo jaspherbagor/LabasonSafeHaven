@@ -11,4 +11,14 @@ class WebsiteController extends Controller
     {
         return view('home');
     }
+
+    public function register()
+    {
+        return view('register');
+    }
+
+    public function login()
+    {
+        return view('login');
+    }
 }

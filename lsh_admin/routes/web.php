@@ -10,9 +10,12 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+/* Sample Customer Login Routes */ 
 Route::get('/', [WebsiteController::class, 'index'])->name('home');
 
+Route::get('/register', [WebsiteController::class, 'register'])->name('register');
 
+Route::get('/login', [WebsiteController::class, 'login'])->name('login');
 
 /* Admin Routes */
 
