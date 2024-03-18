@@ -191,52 +191,52 @@
             </div>
         </div>
     </section>
-    <section class="client-review bg-success container-fluid px-3 py-4 text-center h-auto">
-        <h2 class="text-center fw-semibold">Client Reviews</h2>
-        <div id="carouselExampleIndicators" class="carousel slide mb-4 mt-3 px-2" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
+    <section class="client-review bg-success container-fluid px-3 py-4 text-center">
+        <h2 class="text-center fw-semibold mb-5 mt-5 text-white pb-4">Client Reviews</h2>
+
+          <div id="carouselExampleIndicators" class="carousel slide carousel-fade px-4" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="carousel-text text-center">
-                        <img src="" alt="">
-                        <h5>Name</h5>
-                        <h5>Position</h5>
-                        <h4 class="fw-medium text-white">
-                            "What a wonderful stay! The staff at Labason Safe Haven made me feel right at home. The rooms were clean, and the surroundings were so serene – it was truly a dream come true! Can't wait to return for another relaxing getaway"
-                        </h4>
-                        <h5 class="fw-bold mb-5 mt-4 text-warning">Olivia Chen</h5>
-                    </div>
+              <div class="carousel-item active">
+                <div class="carousel-text text-white">
+                    <img src="{{ asset('home_images/woman-img-1.jpg') }}" alt=".." class="review-img">
+                    <h5 class="mt-4 mb-2">Sarah Johnson</h5>
+                    <h6 class="mb-4">Marketing Consultant</h6>
+                    <h4 class="fw-medium mb-5 pb-4">
+                        "What a wonderful stay! The staff at Labason Safe Haven made me feel right at home. The rooms were clean, and the surroundings were so serene – it was truly a dream come true! Can't wait to return for another relaxing getaway"
+                    </h4>
                 </div>
-                <div class="carousel-item active">
-                    <div class="carousel-text">
-                        
-                        <h4 class="fw-medium text-white">
-                            "Labason Safe Haven exceeded all my expectations! From the friendly staff to the cozy rooms, every detail was perfect. It felt like a home away from home, and I can't wait to recommend it to all my friends!"
-                        </h4>
-                        <h5 class="fw-bold mb-5 mt-4 text-warning">Olivia Chen</h5>
-                    </div>
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-text text-white">
+                    <img src="{{ asset('home_images/guy-img.jpg') }}" alt=".." class="review-img">
+                    <h5 class="mt-4 mb-2">John Smith</h5>
+                    <h6 class="mb-4">Software Engineer</h6>
+                    <h4 class="fw-medium mb-5 pb-4">
+                        "Labason Safe Haven exceeded all my expectations! From the friendly staff to the cozy rooms, every detail was perfect. It felt like a home away from home, and I can't wait to recommend it to all my friends!"
+                    </h4>
                 </div>
-                <div class="carousel-item active">
-                    <div class="carousel-text">
-                        
-                        <h4 class="fw-medium text-white fst-italic">
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-text">
+                    <div class="carousel-text text-white">
+                        <img src="{{ asset('home_images/woman-img-2.jpg') }}" alt=".." class="review-img">
+                        <h5 class="mt-4 mb-2">Emily Davidson</h5>
+                        <h6 class="mb-4">Teacher</h6>
+                        <h4 class="fw-medium mb-5 pb-4">
                             "My stay at Labason Safe Haven was absolutely delightful! The staff were incredibly welcoming, and the atmosphere was so peaceful. I left feeling completely refreshed and already planning my next visit. Highly recommend for anyone seeking a relaxing retreat!"
                         </h4>
-                        <h5 class="fw-bold mb-5 mt-4 text-warning">Olivia Chen</h5>
                     </div>
                 </div>
-            {{-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button> --}}
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
           </div>
     </section>
 

@@ -101,3 +101,15 @@ html, body {
 .all-accommodations-btn:hover {
     background-color: var(--button-hover);
 }
+
+.review-img {
+    height: 80px
+}
+
+.client-review {
+    background: url('../home_images/hotel-room-sample.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
