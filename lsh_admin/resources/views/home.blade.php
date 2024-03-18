@@ -55,7 +55,7 @@
         <form action="">
             <div class="form-group row aling-items-center justify-content-center">
                 <div class="col-md-3 col-sm-6 col-12 mb-md-0 mb-3">
-                    <select class="form-control me-2 search-input-element" id="exampleFormControlSelect2">
+                    <select class="form-control me-1 search-input-element" id="exampleFormControlSelect2">
                         <option>Select Accommodation</option>
                         <option>Hotel</option>
                         <option>Apartment</option>
@@ -63,13 +63,13 @@
                     </select>
                 </div>
                 <div class="col-md-3 col-sm-6 col-12 mb-md-0 mb-3">
-                    <input type="text" id="dateRangePicker" class="form-control me-2" placeholder="Check In & Check Out">
+                    <input type="text" id="dateRangePicker" class="form-control me-1" placeholder="Check In & Check Out">
                 </div>
                 <div class="col-md-2 col-sm-4 col-12 mb-md-0 mb-3">
-                    <input type="text" class="form-control me-2" placeholder="Adults">
+                    <input type="text" class="form-control me-1" placeholder="Adults">
                 </div>
                 <div class="col-md-2 col-sm-4 col-12 mb-md-0 mb-3">
-                    <input type="text" class="form-control me-2" placeholder="Children">
+                    <input type="text" class="form-control me-1" placeholder="Children">
                 </div>
                 <div class="col-md-2 col-sm-4 col-12">
                     <button type="submit" class="btn book-now-btn">Book Now</button>

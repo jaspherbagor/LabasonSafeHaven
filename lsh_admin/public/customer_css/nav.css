@@ -43,7 +43,6 @@ html, body {
 }
 
 .login-btn, .register-btn {
-    border: 1.5px solid var(--button-hover) ;
     background: var(--primary-color);
     color: var(--text-color-dark)
 }
