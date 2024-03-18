@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="register-container container-fluid d-flex align-items-center justify-content-center px-2 py-5">
-        <div class="needs-validation form-container p-3 mt-5 h-auto">
+        <div class="needs-validation registration-form-container p-3 mt-5 h-auto">
             <div class="text-center">
                 <a href="{{ route('home') }}">
                     <img src="{{ asset('home_images/logo.png') }}" class="logo-img" alt="logo" />

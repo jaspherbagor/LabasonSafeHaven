@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ asset('customer_css/nav.css') }}">
     <link rel="stylesheet" href="{{ asset('customer_css/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('customer_css/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('customer_css/login.css') }}">
 </head>
 <body>
     @yield('nav')

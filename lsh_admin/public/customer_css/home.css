@@ -118,8 +118,8 @@ html, body {
     background-attachment: fixed;
 }
 
-.carousel-text {
-    text-shadow: 1px 1px 50px var(--text-color-dark) !important;
+.carousel-text, .carousel-caption {
+    text-shadow: 1px 1px 10px var(--text-color-dark) !important;
 }
 
 .rate-icon {
