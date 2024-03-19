@@ -18,9 +18,36 @@ class AdminLoginController extends Controller
         return view('admin.login');
     }
 
-    public function forget_password()
+    public function forgetPassword()
     {
         return view('admin.forget_password');
+    }
+
+    public function forgetPasswordSubmit(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
+        $admin_data = Admin::where('email', $request->email)->first();
+
+        if(!$admin_data) {
+            return redirect()->back()->with('error', 'Email address not found!');
+        }
+        
+        $token = hash('sha256',time());
+
+        $admin_data->token = $token;
+        $admin_data->update();
+
+        $resetLink = url('admin/reset-password/'.$token.'/'.$request->email);
+        $subject = 'Reset Password';
+        $message = 'I hope this message finds you well. You are reaching out to request a password reset for your account. Please assist by following the reset process. Kindly click on the following link to reset your password: ';
+        $message .= '<a href="'.$resetLink.'">Click Here</a>';
+
+        Mail::to($request->email)->send(new WebsiteMail($subject,$message));
+
+        return redirect()->route('admin_login')->with('success', 'Please check your email and follow the steps there.');
     }
 
     public function loginSubmit(Request $request)
@@ -47,4 +74,5 @@ class AdminLoginController extends Controller
         Auth::guard('admin')->logout();
         return redirect()->route('admin_login');
     }
+
 }
