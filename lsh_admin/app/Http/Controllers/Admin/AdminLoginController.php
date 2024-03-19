@@ -77,7 +77,30 @@ class AdminLoginController extends Controller
 
     public function resetPassword($token, $email)
     {
-        echo $token;
+        $admin_data = Admin::where('token', $token)->where('email', $email)->first();
+        if(!$admin_data) {
+            return redirect()->route('admin_login');
+        }
+
+
+        return view('admin.reset_password', compact('token', 'email'));
+
     }
+
+    public function resetPasswordSubmit(Request $request) 
+    {
+        $request->validate([
+            'password' => 'required',
+            'confirm_password' => 'required|same:password'
+        ]);
+
+        $admin_data = Admin::where('token',$request->token)->where('email',$request->email)->first();
+        $admin_data->password = Hash::make($request->password);
+        $admin_data->token = '';
+        $admin_data->update();
+
+        return redirect()->route('admin_login')->with('success', 'Password has been reset successfully!');
+    }
+
 
 }
