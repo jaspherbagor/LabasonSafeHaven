@@ -75,4 +75,9 @@ class AdminLoginController extends Controller
         return redirect()->route('admin_login');
     }
 
+    public function resetPassword($token, $email)
+    {
+        echo $token;
+    }
+
 }
