@@ -3,16 +3,16 @@
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\HomeController;
 // use App\Http\Controllers\Customer\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 /* Sample Customer Login Routes */ 
 // Route::get('/', [WebsiteController::class, 'index'])->name('home');
