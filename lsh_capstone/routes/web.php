@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\AdminSlideController as AdminAdminSlideController;
+use App\Http\Controllers\AdminSlideController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\HomeController;
 // use App\Http\Controllers\Customer\WebsiteController;
@@ -43,3 +45,9 @@ Route::post('/admin/reset-password-submit', [AdminLoginController::class, 'reset
 Route::get('/admin/edit-profile', [AdminProfileController::class, 'index'])->middleware('admin:admin')->name('admin_profile');
 
 Route::post('/admin/edit-profile-submit', [AdminProfileController::class, 'profileSubmit'])->middleware('admin:admin')->name('admin_profile_submit');
+
+Route::get('/admin/slide/view', [AdminAdminSlideController::class, 'index'])->name('admin_slide_view')->middleware('admin:admin');
+
+Route::get('/admin/slide/add', [AdminAdminSlideController::class, 'add'])->name('admin_slide_add')->middleware('admin:admin');
+
+Route::post('/admin/slide/store', [AdminAdminSlideController::class, 'store'])->name('admin_slide_store')->middleware('admin:admin');
