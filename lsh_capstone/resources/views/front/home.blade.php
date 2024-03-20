@@ -31,12 +31,10 @@
                 <div class="col-lg-3">
                     <div class="form-group">
                         <select name="" class="form-select">
-                            <option value="">Select Room</option>
-                            <option value="">Standard Couple Bed Room</option>
-                            <option value="">Delux Couple Bed Room</option>
-                            <option value="">Standard Four Bed Room</option>
-                            <option value="">Delux Four Bed Room</option>
-                            <option value="">VIP Special Room</option>
+                            <option value="">Select Accommodation</option>
+                            <option value="">Hotel</option>
+                            <option value="">Apartment</option>
+                            <option value="">Boarding House</option>
                         </select>
                     </div>
                 </div>
@@ -113,7 +111,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            {{-- <div class="col-md-3">
                 <div class="inner">
                     <div class="icon"><i class="fa fa-coffee"></i></div>
                     <div class="text">
@@ -134,8 +132,8 @@
                         </p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3">
+            </div> --}}
+            {{-- <div class="col-md-3">
                 <div class="inner">
                     <div class="icon"><i class="fa fa-cubes"></i></div>
                     <div class="text">
@@ -145,8 +143,8 @@
                         </p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3">
+            </div> --}}
+            {{-- <div class="col-md-3">
                 <div class="inner">
                     <div class="icon"><i class="fa fa-cutlery"></i></div>
                     <div class="text">
@@ -156,7 +154,7 @@
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
@@ -167,7 +165,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="main-header">Rooms and Suites</h2>
+                <h2 class="main-header">Featured Accommodation Rooms</h2>
             </div>
         </div>
         <div class="row">
@@ -177,7 +175,7 @@
                         <img src="uploads/1.jpg" alt="">
                     </div>
                     <div class="text">
-                        <h2><a href="">Standard Couple Bed</a></h2>
+                        <h2><a href="">Maravillas Boarding House</a></h2>
                         <div class="price">
                             $100/night
                         </div>
@@ -193,7 +191,7 @@
                         <img src="uploads/2.jpg" alt="">
                     </div>
                     <div class="text">
-                        <h2><a href="">Standard Couple Bed</a></h2>
+                        <h2><a href="">Ember's House</a></h2>
                         <div class="price">
                             $100/night
                         </div>
@@ -209,7 +207,7 @@
                         <img src="uploads/3.jpg" alt="">
                     </div>
                     <div class="text">
-                        <h2><a href="">Standard Couple Bed</a></h2>
+                        <h2><a href="">Abetom Apartment</a></h2>
                         <div class="price">
                             $100/night
                         </div>
@@ -225,7 +223,7 @@
                         <img src="uploads/4.jpg" alt="">
                     </div>
                     <div class="text">
-                        <h2><a href="">Standard Couple Bed</a></h2>
+                        <h2><a href="">Lerios Pension House</a></h2>
                         <div class="price">
                             $100/night
                         </div>
@@ -235,7 +233,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            {{-- <div class="col-md-3">
                 <div class="inner">
                     <div class="photo">
                         <img src="uploads/5.jpg" alt="">
@@ -299,7 +297,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="row">
             <div class="col-md-12">
                 <div class="big-button">

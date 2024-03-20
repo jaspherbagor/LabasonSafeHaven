@@ -53,7 +53,7 @@
             <!-- Menu For Mobile Device -->
             <div class="mobile-nav">
                 <a href="index.html" class="logo">
-                    <img src="uploads/logo.png" alt="">
+                    <img src="{{ asset('upload/logo.png') }}" alt="">
                 </a>
             </div>
         
@@ -73,22 +73,16 @@
                                     <a href="{{ route('about') }}" class="nav-link">About</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="javascript:void;" class="nav-link dropdown-toggle">Room & Suite</a>
+                                    <a href="javascript:void;" class="nav-link dropdown-toggle">Accommodations</a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
-                                            <a href="room-detail.html" class="nav-link">Regular Couple Bed</a>
+                                            <a href="room-detail.html" class="nav-link">Hotel</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="room-detail.html" class="nav-link">Delux Couple Bed</a>
+                                            <a href="room-detail.html" class="nav-link">Apartment</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="room-detail.html" class="nav-link">Regular Double Bed</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="room-detail.html" class="nav-link">Delux Double Bed</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="room-detail.html" class="nav-link">Premium Suite</a>
+                                            <a href="room-detail.html" class="nav-link">Boarding House</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -158,8 +152,8 @@
                                     <i class="fa fa-map-marker"></i>
                                 </div>
                                 <div class="right">
-                                    34 Antiger Lane,<br>
-                                    PK Lane, USA, 12937
+                                    Tandang Sora St.,<br>
+                                    Labason, Zamboanga del Norte, 7117
                                 </div>
                             </div>
                             <div class="list-item">
@@ -167,7 +161,7 @@
                                     <i class="fa fa-volume-control-phone"></i>
                                 </div>
                                 <div class="right">
-                                    contact@arefindev.com
+                                    contact@lsh.space
                                 </div>
                             </div>
                             <div class="list-item">
@@ -175,7 +169,7 @@
                                     <i class="fa fa-envelope-o"></i>
                                 </div>
                                 <div class="right">
-                                    122-222-1212
+                                    0936-256-3482
                                 </div>
                             </div>
                             <ul class="social">
