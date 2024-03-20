@@ -51,3 +51,7 @@ Route::get('/admin/slide/view', [AdminAdminSlideController::class, 'index'])->na
 Route::get('/admin/slide/add', [AdminAdminSlideController::class, 'add'])->name('admin_slide_add')->middleware('admin:admin');
 
 Route::post('/admin/slide/store', [AdminAdminSlideController::class, 'store'])->name('admin_slide_store')->middleware('admin:admin');
+
+Route::get('/admin/slide/edit/{id}', [AdminAdminSlideController::class, 'edit'])->name('admin_slide_edit')->middleware('admin:admin');
+
+Route::post('/admin/slide/update/{id}', [AdminAdminSlideController::class, 'update'])->name('admin_slide_update')->middleware('admin:admin');
