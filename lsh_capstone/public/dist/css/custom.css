@@ -41,7 +41,7 @@ table.t1 tr td {
 .fz_50 {font-size: 50px!important;}
 
 .c1 {
-    color: #6777ef;
+    color: #Deb887;
 }
 
 .hide {
@@ -410,4 +410,9 @@ hr.invoice-above-table {
 
 .form-control.is-invalid, .was-validated .form-control:invalid {
     border-color: #dc3545 !important
+}
+
+.card.card-statistic-1 .card-icon i {
+    color: #fff;
+    font-size: 30px;
 }

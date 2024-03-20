@@ -1537,7 +1537,8 @@ h6 .badge {
   left: 0;
   width: 100%;
   height: 115px;
-  background-color: #6777ef;
+  background-color: #Deb887
+;
   z-index: -1; }
 
 .navbar {
@@ -2822,8 +2823,8 @@ body.layout-3 .main-footer {
     .main-sidebar .sidebar-menu li.active ul.dropdown-menu {
       background-color: #f8fafb; }
     .main-sidebar .sidebar-menu li a.has-dropdown:after {
-      content: "";
-      font-family: 'Font Awesome 5 Free';
+      content: "\f105";
+      font-family: 'FontAwesome';
       font-weight: 900;
       position: absolute;
       top: 50%;
