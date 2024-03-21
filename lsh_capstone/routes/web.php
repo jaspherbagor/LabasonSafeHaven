@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
-use App\Http\Controllers\Admin\AdminSlideController as AdminAdminSlideController;
-use App\Http\Controllers\AdminSlideController;
+use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\HomeController;
 // use App\Http\Controllers\Customer\WebsiteController;
@@ -46,14 +46,30 @@ Route::get('/admin/edit-profile', [AdminProfileController::class, 'index'])->mid
 
 Route::post('/admin/edit-profile-submit', [AdminProfileController::class, 'profileSubmit'])->middleware('admin:admin')->name('admin_profile_submit');
 
-Route::get('/admin/slide/view', [AdminAdminSlideController::class, 'index'])->name('admin_slide_view')->middleware('admin:admin');
 
-Route::get('/admin/slide/add', [AdminAdminSlideController::class, 'add'])->name('admin_slide_add')->middleware('admin:admin');
 
-Route::post('/admin/slide/store', [AdminAdminSlideController::class, 'store'])->name('admin_slide_store')->middleware('admin:admin');
+Route::get('/admin/slide/view', [AdminSlideController::class, 'index'])->name('admin_slide_view')->middleware('admin:admin');
 
-Route::get('/admin/slide/edit/{id}', [AdminAdminSlideController::class, 'edit'])->name('admin_slide_edit')->middleware('admin:admin');
+Route::get('/admin/slide/add', [AdminSlideController::class, 'add'])->name('admin_slide_add')->middleware('admin:admin');
 
-Route::post('/admin/slide/update/{id}', [AdminAdminSlideController::class, 'update'])->name('admin_slide_update')->middleware('admin:admin');
+Route::post('/admin/slide/store', [AdminSlideController::class, 'store'])->name('admin_slide_store')->middleware('admin:admin');
 
-Route::get('/admin/slide/delete/{id}', [AdminAdminSlideController::class, 'delete'])->name('admin_slide_delete')->middleware('admin:admin');
+Route::get('/admin/slide/edit/{id}', [AdminSlideController::class, 'edit'])->name('admin_slide_edit')->middleware('admin:admin');
+
+Route::post('/admin/slide/update/{id}', [AdminSlideController::class, 'update'])->name('admin_slide_update')->middleware('admin:admin');
+
+Route::get('/admin/slide/delete/{id}', [AdminSlideController::class, 'delete'])->name('admin_slide_delete')->middleware('admin:admin');
+
+
+
+Route::get('/admin/feature/view', [AdminFeatureController::class, 'index'])->name('admin_feature_view')->middleware('admin:admin');
+
+Route::get('/admin/feature/add', [AdminFeatureController::class, 'add'])->name('admin_feature_add')->middleware('admin:admin');
+
+Route::post('/admin/feature/store', [AdminFeatureController::class, 'store'])->name('admin_feature_store')->middleware('admin:admin');
+
+Route::get('/admin/feature/edit/{id}', [AdminFeatureController::class, 'edit'])->name('admin_feature_edit')->middleware('admin:admin');
+
+Route::post('/admin/feature/update/{id}', [AdminFeatureController::class, 'update'])->name('admin_feature_update')->middleware('admin:admin');
+
+Route::get('/admin/feature/delete/{id}', [AdminFeatureController::class, 'delete'])->name('admin_feature_delete')->middleware('admin:admin');
