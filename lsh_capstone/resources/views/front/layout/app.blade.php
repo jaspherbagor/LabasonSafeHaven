@@ -53,7 +53,7 @@
             <!-- Menu For Mobile Device -->
             <div class="mobile-nav">
                 <a href="index.html" class="logo">
-                    <img src="{{ asset('upload/logo.png') }}" alt="">
+                    <img src="{{ asset('uploads/logo.png') }}" alt="">
                 </a>
             </div>
         

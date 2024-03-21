@@ -21,6 +21,8 @@ Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
+Route::get('/post/{id}', [BlogController::class, 'single_post'])->name('single_post');
+
 /* Sample Customer Login Routes */ 
 // Route::get('/', [WebsiteController::class, 'index'])->name('home');
 
