@@ -48,8 +48,8 @@ class AdminPostController extends Controller
 
     public function edit($id)
     {
-        $testimonial_data = Post::where('id',$id)->first();
-        return view('admin.testimonial_edit', compact('testimonial_data'));
+        $post_data = Post::where('id',$id)->first();
+        return view('admin.post_edit', compact('post_data'));
     }
 
     public function update(Request $request, $id)
@@ -72,12 +72,12 @@ class AdminPostController extends Controller
             $obj->photo = $final_name;           
         }
 
-        $obj->name = $request->name;
-        $obj->designation = $request->designation;
-        $obj->comment = $request->comment;
+        $obj->heading = $request->heading;
+        $obj->short_content = $request->short_content;
+        $obj->content = $request->content;
         $obj->update();
 
-        return redirect()->back()->with('success', 'Testimonial is updated successfully!');
+        return redirect()->back()->with('success', 'Post is updated successfully!');
         
     }
 
@@ -87,6 +87,6 @@ class AdminPostController extends Controller
         unlink(public_path('uploads/'.$single_data->photo));
         $single_data->delete();
 
-        return redirect()->back()->with('success', 'Testimonial is deleted successfully!');
+        return redirect()->back()->with('success', 'Post is deleted successfully!');
     }
 }
