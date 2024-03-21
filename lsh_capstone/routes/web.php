@@ -8,15 +8,18 @@ use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Front\AboutController;
+use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\HomeController;
 // use App\Http\Controllers\Customer\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
 
-
+/* Front */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about', [AboutController::class, 'index'])->name('about');
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 /* Sample Customer Login Routes */ 
 // Route::get('/', [WebsiteController::class, 'index'])->name('home');

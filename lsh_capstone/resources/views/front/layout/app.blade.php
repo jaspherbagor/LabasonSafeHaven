@@ -98,7 +98,7 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="blog.html" class="nav-link">Blog</a>
+                                    <a href="{{ route('blog') }}" class="nav-link">Blog</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="contact.html" class="nav-link">Contact</a>
@@ -204,7 +204,7 @@
         </div>
 
         <div class="copyright">
-            Copyright 2022, ArefinDev. All Rights Reserved.
+            Copyright 2024, Labason Safe Haven. All Rights Reserved.
         </div>
      
         <div class="scroll-top">
