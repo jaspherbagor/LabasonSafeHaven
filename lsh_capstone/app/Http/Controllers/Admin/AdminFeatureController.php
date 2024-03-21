@@ -43,6 +43,10 @@ class AdminFeatureController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'icon' => 'required',
+            'heading' => 'required'
+        ]);
         $obj = Feature::where('id', $id)->first();
 
         $obj->icon = $request->icon;
@@ -59,6 +63,6 @@ class AdminFeatureController extends Controller
         $single_data = Feature::where('id', $id)->first();
         $single_data->delete();
 
-        return redirect()->back()->with('success', 'Slide is deleted successfully!');
+        return redirect()->back()->with('success', 'Feature is deleted successfully!');
     }
 }

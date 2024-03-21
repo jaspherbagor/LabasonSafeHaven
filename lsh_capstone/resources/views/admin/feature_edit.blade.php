@@ -12,29 +12,27 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin_slide_update',$slide_data->id) }}">
+                    <form action="{{ route('admin_feature_update',$feature_data->id) }}" method="post">
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mb-4">
-                                    <label class="form-label">Icon</label>
-                                    <input type="text" class="form-control" name="button_text" value="{{ $slide_data->button_text }}">
+                                    <label class="form-label">Esisting Icon</label>
+                                    <div>
+                                        <i class="{{ $feature_data->icon }} fz_40"></i>
+                                    </div>
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label">Heading *</label>
-                                    <input type="text" class="form-control" name="heading" value="{{ $slide_data->heading }}">
+                                    <label class="form-label">Change Icon</label>
+                                    <input type="text" class="form-control" name="icon" value="{{ $feature_data->icon }}">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Heading</label>
+                                    <input type="text" class="form-control" name="heading" value="{{ $feature_data->heading }}">
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Text</label>
-                                    <textarea name="text"  cols="30" rows="10" class="form-control h_100">{{ $slide_data->text }}</textarea>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label">Button Text</label>
-                                    <input type="text" class="form-control" name="button_text" value="{{ $slide_data->button_text }}">
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label">Button URL</label>
-                                    <input type="text" class="form-control" name="button_url" value="{{ $slide_data->button_url }}">
+                                    <textarea name="text"  cols="30" rows="10" class="form-control h_100">{{ $feature_data->text }}</textarea>
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label"></label>
