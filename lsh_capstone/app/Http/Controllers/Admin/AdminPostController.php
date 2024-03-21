@@ -16,13 +16,16 @@ class AdminPostController extends Controller
 
     public function add()
     {
-        return view('admin.slide_add');
+        return view('admin.post_add');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'photo' => 'required|image|mimes:jpg,jpeg,png,svg,webp,gif|max:5120'
+            'photo' => 'required|image|mimes:jpg,jpeg,png,svg,webp,gif|max:5120',
+            'heading' => 'required',
+            'short_content' => 'required',
+            'content' => 'required'
         ]);
 
         
@@ -35,18 +38,18 @@ class AdminPostController extends Controller
         $obj = new Post();
         $obj->photo = $final_name;
         $obj->heading = $request->heading;
-        $obj->text = $request->text;
-        $obj->button_text = $request->button_text;
-        $obj->button_url = $request->button_url;
+        $obj->short_content = $request->short_content;
+        $obj->content = $request->content;
+        $obj->total_view = 1;
         $obj->save();
 
-        return redirect()->back()->with('success', 'Slide is added successfully!');
+        return redirect()->back()->with('success', 'Post is added successfully!');
     }
 
     public function edit($id)
     {
-        $slide_data = Post::where('id',$id)->first();
-        return view('admin.slide_edit', compact('slide_data'));
+        $testimonial_data = Post::where('id',$id)->first();
+        return view('admin.testimonial_edit', compact('testimonial_data'));
     }
 
     public function update(Request $request, $id)
@@ -69,13 +72,12 @@ class AdminPostController extends Controller
             $obj->photo = $final_name;           
         }
 
-        $obj->heading = $request->heading;
-        $obj->text = $request->text;
-        $obj->button_text = $request->button_text;
-        $obj->button_url = $request->button_url;
+        $obj->name = $request->name;
+        $obj->designation = $request->designation;
+        $obj->comment = $request->comment;
         $obj->update();
 
-        return redirect()->back()->with('success', 'Slide is updated successfully!');
+        return redirect()->back()->with('success', 'Testimonial is updated successfully!');
         
     }
 
@@ -85,6 +87,6 @@ class AdminPostController extends Controller
         unlink(public_path('uploads/'.$single_data->photo));
         $single_data->delete();
 
-        return redirect()->back()->with('success', 'Slide is deleted successfully!');
+        return redirect()->back()->with('success', 'Testimonial is deleted successfully!');
     }
 }
