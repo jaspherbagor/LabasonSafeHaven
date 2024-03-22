@@ -102,7 +102,7 @@
                     <div class="text">
                         <h2><a href="">Maravillas Boarding House</a></h2>
                         <div class="price">
-                            $100/night
+                            ₱3600/month
                         </div>
                         <div class="button">
                             <a href="room-detail.html" class="btn btn-primary">See Detail</a>
@@ -118,7 +118,7 @@
                     <div class="text">
                         <h2><a href="">Ember's House</a></h2>
                         <div class="price">
-                            $100/night
+                            ₱400/night
                         </div>
                         <div class="button">
                             <a href="room-detail.html" class="btn btn-primary">See Detail</a>
@@ -134,7 +134,7 @@
                     <div class="text">
                         <h2><a href="">Abetom Apartment</a></h2>
                         <div class="price">
-                            $100/night
+                            ₱4000/month
                         </div>
                         <div class="button">
                             <a href="room-detail.html" class="btn btn-primary">See Detail</a>
@@ -148,9 +148,9 @@
                         <img src="uploads/4.jpg" alt="">
                     </div>
                     <div class="text">
-                        <h2><a href="">Lerios Pension House</a></h2>
+                        <h2><a href="">Bayangan Hotel</a></h2>
                         <div class="price">
-                            $100/night
+                            ₱800/night
                         </div>
                         <div class="button">
                             <a href="room-detail.html" class="btn btn-primary">See Detail</a>
