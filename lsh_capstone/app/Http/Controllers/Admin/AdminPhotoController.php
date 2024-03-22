@@ -16,16 +16,13 @@ class AdminPhotoController extends Controller
 
     public function add()
     {
-        return view('admin.post_add');
+        return view('admin.photo_add');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'photo' => 'required|image|mimes:jpg,jpeg,png,svg,webp,gif|max:5120',
-            'heading' => 'required',
-            'short_content' => 'required',
-            'content' => 'required'
+            'photo' => 'required|image|mimes:jpg,jpeg,png,svg,webp,gif|max:5120'
         ]);
 
         
@@ -37,19 +34,16 @@ class AdminPhotoController extends Controller
 
         $obj = new Photo();
         $obj->photo = $final_name;
-        $obj->heading = $request->heading;
-        $obj->short_content = $request->short_content;
-        $obj->content = $request->content;
-        $obj->total_view = 1;
+        $obj->caption = $request->caption;
         $obj->save();
 
-        return redirect()->back()->with('success', 'Post is added successfully!');
+        return redirect()->back()->with('success', 'Photo is added successfully!');
     }
 
     public function edit($id)
     {
         $post_data = Photo::where('id',$id)->first();
-        return view('admin.post_edit', compact('post_data'));
+        return view('admin.photo_edit', compact('photo_data'));
     }
 
     public function update(Request $request, $id)
