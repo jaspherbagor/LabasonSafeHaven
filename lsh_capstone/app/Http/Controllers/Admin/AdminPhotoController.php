@@ -42,7 +42,7 @@ class AdminPhotoController extends Controller
 
     public function edit($id)
     {
-        $post_data = Photo::where('id',$id)->first();
+        $photo_data = Photo::where('id',$id)->first();
         return view('admin.photo_edit', compact('photo_data'));
     }
 
@@ -66,12 +66,10 @@ class AdminPhotoController extends Controller
             $obj->photo = $final_name;           
         }
 
-        $obj->heading = $request->heading;
-        $obj->short_content = $request->short_content;
-        $obj->content = $request->content;
+        $obj->caption = $request->caption;
         $obj->update();
 
-        return redirect()->back()->with('success', 'Post is updated successfully!');
+        return redirect()->back()->with('success', 'Photo is updated successfully!');
         
     }
 
@@ -81,6 +79,6 @@ class AdminPhotoController extends Controller
         unlink(public_path('uploads/'.$single_data->photo));
         $single_data->delete();
 
-        return redirect()->back()->with('success', 'Post is deleted successfully!');
+        return redirect()->back()->with('success', 'Photo is deleted successfully!');
     }
 }
