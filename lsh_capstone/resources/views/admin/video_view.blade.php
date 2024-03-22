@@ -26,11 +26,13 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $row->video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                            <div class="iframe-container-1">
+                                                <iframe  width="560" height="315" src="https://www.youtube.com/embed/{{ $row->video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                            </div>
                                         </td>
                                         <td>{{ $row->caption }}</td>
                                         <td class="pt_10 pb_10">
-                                            <a href="{{ route('admin_video_edit',$row->id) }}" class="btn btn-primary">Edit</a>
+                                            <a href="{{ route('admin_video_edit',$row->id) }}" class="btn btn-primary mb-1">Edit</a>
                                             <a href="{{ route('admin_video_delete',$row->id) }}" class="btn btn-danger" onClick="return confirm('Are you sure?');">Delete</a>
                                         </td>
                                         

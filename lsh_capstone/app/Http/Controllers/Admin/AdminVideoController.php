@@ -22,22 +22,16 @@ class AdminVideoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'photo' => 'required|image|mimes:jpg,jpeg,png,svg,webp,gif|max:5120'
+            'video_id' => 'required'
         ]);
 
-        
-
-        $ext = $request->file('photo')->extension();
-        $final_name = time().'.'.$ext;
-
-        $request->file('photo')->move(public_path('uploads/'),$final_name);
 
         $obj = new Video();
-        $obj->photo = $final_name;
+        $obj->video_id = $request->video_id;
         $obj->caption = $request->caption;
         $obj->save();
 
-        return redirect()->back()->with('success', 'Photo is added successfully!');
+        return redirect()->back()->with('success', 'Video is added successfully!');
     }
 
     public function edit($id)
