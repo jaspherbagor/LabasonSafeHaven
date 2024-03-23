@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminAboutController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminHomeController;
@@ -164,3 +165,10 @@ Route::get('/admin/faq/edit/{id}', [AdminFaqController::class, 'edit'])->name('a
 Route::post('/admin/faq/update/{id}', [AdminFaqController::class, 'update'])->name('admin_faq_update')->middleware('admin:admin');
 
 Route::get('/admin/faq/delete/{id}', [AdminFaqController::class, 'delete'])->name('admin_faq_delete')->middleware('admin:admin');
+
+
+Route::get('/admin/page/about', [AdminAboutController::class, 'about'])->name('admin_about_page')->middleware('admin:admin');
+
+Route::post('/admin/page/about/update', [AdminAboutController::class, 'about_update'])->name('admin_about_page_update')->middleware('admin:admin');
+
+// Route::get('/admin/about/add', [AdminAboutController::class, 'add'])->name('admin_about_add')->middleware('admin:admin');
