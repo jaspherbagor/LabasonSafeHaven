@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\BlogController;
+use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PhotoController;
@@ -39,6 +40,10 @@ Route::get('/video-gallery', [VideoController::class, 'index'])->name('video_gal
 Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 
 Route::get('/terms-and-conditions', [TermsController::class, 'index'])->name('terms');
+
+
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 /* Sample Customer Login Routes */ 
 // Route::get('/', [WebsiteController::class, 'index'])->name('home');
@@ -177,6 +182,13 @@ Route::post('/admin/page/about/update', [AdminPageController::class, 'about_upda
 Route::get('/admin/page/terms', [AdminPageController::class, 'terms'])->name('admin_terms_page')->middleware('admin:admin');
 
 Route::post('/admin/page/terms/update', [AdminPageController::class, 'terms_update'])->name('admin_terms_page_update')->middleware('admin:admin');
+
+
+
+
+
+
+
 
 
 Route::get('/admin/page/contact', [AdminPageController::class, 'contact'])->name('admin_contact_page')->middleware('admin:admin');
