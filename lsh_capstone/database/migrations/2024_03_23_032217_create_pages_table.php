@@ -21,6 +21,12 @@ return new class extends Migration
             $table->text('terms_heading');
             $table->text('terms_content');
             $table->integer('terms_status');
+
+
+
+            $table->text('contact_heading');
+            $table->text('contact_map')->nullable();
+            $table->integer('contact_status');
             $table->timestamps();
         });
     }

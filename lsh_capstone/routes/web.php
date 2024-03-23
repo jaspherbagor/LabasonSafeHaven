@@ -177,3 +177,8 @@ Route::post('/admin/page/about/update', [AdminPageController::class, 'about_upda
 Route::get('/admin/page/terms', [AdminPageController::class, 'terms'])->name('admin_terms_page')->middleware('admin:admin');
 
 Route::post('/admin/page/terms/update', [AdminPageController::class, 'terms_update'])->name('admin_terms_page_update')->middleware('admin:admin');
+
+
+Route::get('/admin/page/contact', [AdminPageController::class, 'contact'])->name('admin_contact_page')->middleware('admin:admin');
+
+Route::post('/admin/page/contact/update', [AdminPageController::class, 'contact_update'])->name('admin_contact_page_update')->middleware('admin:admin');
