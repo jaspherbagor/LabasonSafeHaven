@@ -12,7 +12,12 @@
         @include('front.layout.styles')
         @include('front.layout.scripts')
 
-        <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500&display=swap" rel="stylesheet">
+        {{-- Oswald Google Font Link CDN --}}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+        {{-- Oswald Google Font CDN --}}
         
         <!-- Google Analytics -->
         <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-84213520-6"></script>
@@ -138,7 +143,7 @@
                                 <li><a href="{{ route('home') }}">Home</a></li>
                                 <li><a href="terms.html">Terms and Conditions</a></li>
                                 <li><a href="privacy.html">Privacy Policy</a></li>
-                                <li><a href="disclaimer.html">Disclaimer</a></li>
+                                <li><a href="{{ route('faq') }}">FAQ</a></li>
                             </ul>
                         </div>
                     </div>

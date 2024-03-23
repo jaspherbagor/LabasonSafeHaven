@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\BlogController;
+use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PhotoController;
 use App\Http\Controllers\Front\VideoController;
@@ -32,6 +33,8 @@ Route::get('/post/{id}', [BlogController::class, 'single_post'])->name('single_p
 Route::get('/photo-gallery', [PhotoController::class, 'index'])->name('photo_gallery');
 
 Route::get('/video-gallery', [VideoController::class, 'index'])->name('video_gallery');
+
+Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 
 /* Sample Customer Login Routes */ 
 // Route::get('/', [WebsiteController::class, 'index'])->name('home');
