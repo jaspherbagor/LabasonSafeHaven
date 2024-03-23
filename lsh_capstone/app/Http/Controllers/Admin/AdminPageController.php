@@ -3,24 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\About;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
-class AdminAboutController extends Controller
+class AdminPageController extends Controller
 {
     public function about()
     {
-        $about_data = About::where('id',1)->first();
+        $about_data = Page::where('id',1)->first();
         return view('admin.about_page', compact('about_data'));
     }
 
     public function about_update(Request $request)
     {
-        $obj = About::where('id',1)->first();
+        $obj = Page::where('id',1)->first();
 
 
         $obj->about_heading = $request->about_heading;
         $obj->about_content = $request->about_content;
+        $obj->about_status = $request->about_status;
         $obj->update();
 
         return redirect()->back()->with('success', 'About page is updated successfully!');

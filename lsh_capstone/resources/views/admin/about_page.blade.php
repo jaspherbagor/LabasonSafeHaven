@@ -21,6 +21,13 @@
                                     <textarea name="about_content" class="form-control snote" id="" cols="30" rows="10">{{$about_data->about_content }}</textarea>
                                 </div>
                                 <div class="mb-4">
+                                    <label class="form-label">Status *</label>
+                                    <select name="about_status" class="form-control">
+                                        <option value="1" @if($about_data->about_status === 1) selected @endif>Show</option>
+                                        <option value="0" @if($about_data->about_status === 0) selected @endif>Hide</option>
+                                    </select>
+                                </div>
+                                <div class="mb-4">
                                     <label class="form-label"></label>
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
