@@ -26,7 +26,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $row->question }}</td>
                                         <td class="pt_10 pb_10">
-                                            <a href="{{ route('admin_faq_edit',$row->id) }}" class="btn btn-primary mb-1">Edit</a>
+                                            <a href="{{ route('admin_faq_edit',$row->id) }}" class="btn btn-primary mb-md-0 mb-1">Edit</a>
                                             <a href="{{ route('admin_faq_delete',$row->id) }}" class="btn btn-danger" onClick="return confirm('Are you sure?');">Delete</a>
                                         </td>
                                         

@@ -36,7 +36,7 @@ class AdminFaqController extends Controller
 
     public function edit($id)
     {
-        $post_data = FAQ::where('id',$id)->first();
+        $faq_data = FAQ::where('id',$id)->first();
         return view('admin.faq_edit', compact('faq_data'));
     }
 
