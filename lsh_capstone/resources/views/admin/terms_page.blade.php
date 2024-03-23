@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('heading', 'Edit Terms Page')
+@section('heading', 'Edit Terms and Conditions Page')
 
 @section('main_content')
 <div class="section-body">

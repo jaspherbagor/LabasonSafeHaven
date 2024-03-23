@@ -11,7 +11,7 @@
 
             <li class="{{ Request::is('admin/home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home') }}"><i class="fa fa-hand-o-right"></i> <span>Dashboard</span></a></li>
 
-            <li class="nav-item dropdown {{ Request::is('admin/page/about') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('admin/page/about') ||Request::is('admin/page/terms') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fa fa-hand-o-right"></i><span>Pages</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/page/about') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_about_page') }}"><i class="fa fa-angle-right"></i> About</a></li>
