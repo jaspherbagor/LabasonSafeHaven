@@ -73,4 +73,22 @@ class AdminPageController extends Controller
 
         return redirect()->back()->with('success', 'Contact page is updated successfully!');
     }
+
+    public function photo_gallery()
+    {
+        $photo_gallery_data = Page::where('id',1)->first();
+        return view('admin.photo_gallery_page', compact('photo_gallery_data'));
+    }
+
+    public function photo_gallery_update(Request $request)
+    {
+        $obj = Page::where('id',1)->first();
+
+
+        $obj->photo_gallery_heading = $request->photo_gallery_heading;
+        $obj->photo_gallery_status = $request->photo_gallery_status;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Photo gallery page is updated successfully!');
+    }
 }

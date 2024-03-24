@@ -196,3 +196,8 @@ Route::post('/admin/page/terms/update', [AdminPageController::class, 'terms_upda
 Route::get('/admin/page/contact', [AdminPageController::class, 'contact'])->name('admin_contact_page')->middleware('admin:admin');
 
 Route::post('/admin/page/contact/update', [AdminPageController::class, 'contact_update'])->name('admin_contact_page_update')->middleware('admin:admin');
+
+
+Route::get('/admin/page/photo-gallery', [AdminPageController::class, 'photo_gallery'])->name('admin_photo_gallery_page')->middleware('admin:admin');
+
+Route::post('/admin/page/photo-gallery/update', [AdminPageController::class, 'photo_gallery_update'])->name('admin_photo_gallery_page_update')->middleware('admin:admin');
