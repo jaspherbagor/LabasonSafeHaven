@@ -45,6 +45,8 @@ Route::get('/terms-and-conditions', [TermsController::class, 'index'])->name('te
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
+Route::post('/contact/send-email', [ContactController::class, 'send_email'])->name('contact_send_email');
+
 /* Sample Customer Login Routes */ 
 // Route::get('/', [WebsiteController::class, 'index'])->name('home');
 
