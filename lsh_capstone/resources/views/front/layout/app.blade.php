@@ -98,9 +98,11 @@
                                 <li class="nav-item">
                                     <a href="javascript:void;" class="nav-link dropdown-toggle">Gallery</a>
                                     <ul class="dropdown-menu">
+                                        @if($global_page_data->photo_gallery_status === 1)
                                         <li class="nav-item">
                                             <a href="{{ route('photo_gallery') }}" class="nav-link">Photo Gallery</a>
                                         </li>
+                                        @endif
                                         <li class="nav-item">
                                             <a href="{{ route('video_gallery') }}" class="nav-link">Video Gallery</a>
                                         </li>
@@ -136,7 +138,9 @@
                             <h2 class="heading">Site Links</h2>
                             <ul class="useful-links">
                                 <li><a href="rooms.html">Accommodations</a></li>
+                                @if($global_page_data->photo_gallery_status === 1)
                                 <li><a href="{{ route('photo_gallery') }}">Photo Gallery</a></li>
+                                @endif
                                 <li><a href="{{ route('blog') }}">Blog</a></li>
                                 @if($global_page_data->contact_status === 1)
                                 <li><a href="{{ route('contact') }}">{{ $global_page_data->contact_heading }}</a></li>
