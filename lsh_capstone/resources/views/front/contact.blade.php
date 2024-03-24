@@ -22,17 +22,17 @@
                         <div class="mb-3">
                             <label for="name" class="form-label">Name *</label>
                             <input type="text" class="form-control" name="name">
-                            <span class="text-danger error-text name-error"></span>
+                            <span class="text-danger error-text name_error"></span>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email Address *</label>
                             <input type="text" class="form-control" name="email">
-                            <span class="text-danger error-text email-error"></span>
+                            <span class="text-danger error-text email_error"></span>
                         </div>
                         <div class="mb-3">
                             <label for="message" class="form-label">Message *</label>
                             <textarea class="form-control" rows="3" name="message"></textarea>
-                            <span class="text-danger error-text message-error"></span>
+                            <span class="text-danger error-text message_error"></span>
                         </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary bg-website">Send Message</button>
