@@ -57,7 +57,7 @@
 
             <!-- Menu For Mobile Device -->
             <div class="mobile-nav">
-                <a href="index.html" class="logo">
+                <a href="{{ route('home') }}" class="logo">
                     <img src="{{ asset('uploads/logo.png') }}" alt="">
                 </a>
             </div>
@@ -103,9 +103,11 @@
                                             <a href="{{ route('photo_gallery') }}" class="nav-link">Photo Gallery</a>
                                         </li>
                                         @endif
+                                        @if($global_page_data->video_gallery_status === 1)
                                         <li class="nav-item">
                                             <a href="{{ route('video_gallery') }}" class="nav-link">Video Gallery</a>
                                         </li>
+                                        @endif
                                     </ul>
                                 </li>
                                 <li class="nav-item">
@@ -140,6 +142,9 @@
                                 <li><a href="rooms.html">Accommodations</a></li>
                                 @if($global_page_data->photo_gallery_status === 1)
                                 <li><a href="{{ route('photo_gallery') }}">Photo Gallery</a></li>
+                                @endif
+                                @if($global_page_data->video_gallery_status === 1)
+                                <li><a href="{{ route('video_gallery') }}">Video Gallery</a></li>
                                 @endif
                                 <li><a href="{{ route('blog') }}">Blog</a></li>
                                 @if($global_page_data->contact_status === 1)
