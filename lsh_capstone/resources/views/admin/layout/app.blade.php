@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
 
-    <link rel="icon" type="image/png" href="{{ asset('uploads/favicon.png') }}">
-    <title>Admin Panel</title>
+    <link rel="icon" type="image/png" href="{{ asset('uploads/lsh_favicon_admin.svg') }}">
+    <title>Labason Safe Haven - Admin</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 

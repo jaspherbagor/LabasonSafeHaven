@@ -6,7 +6,7 @@
 
     <link rel="icon" type="image/png" href="{{ asset('uploads/favicon.png') }}">
 
-    <title>Admin Panel</title>
+    <title>Labason Safe Haven - Admin</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -61,7 +61,7 @@
             </form>
             <ul class="navbar-nav navbar-right">
                 <li class="nav-link">
-                    <a href="" target="_blank" class="btn btn-warning">Front End</a>
+                    <a href="{{ route('home') }}" target="_blank" class="btn btn-warning">Visit Website</a>
                 </li>
                 <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                     <img alt="image" src="{{ asset('uploads/user.jpg') }}" class="rounded-circle mr-1">

@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <title>Labason Safe Haven</title>        
 		
-        <link rel="icon" type="image/png" href="{{ asset('dist-front/uploads/favicon.png') }}">
+        <link rel="icon" type="image/png" href="{{ asset('uploads/lsh_favicon_front.svg') }}">
 
         @include('front.layout.styles')
         @include('front.layout.scripts')
