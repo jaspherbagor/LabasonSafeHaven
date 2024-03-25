@@ -163,7 +163,9 @@
                                 @endif
 
                                 <li><a href="privacy.html">Privacy Policy</a></li>
+                                @if($global_page_data->faq_status === 1)
                                 <li><a href="{{ route('faq') }}">FAQ</a></li>
+                                @endif
                             </ul>
                         </div>
                     </div>

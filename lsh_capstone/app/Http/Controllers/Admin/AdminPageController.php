@@ -110,4 +110,22 @@ class AdminPageController extends Controller
 
         return redirect()->back()->with('success', 'Video gallery page is updated successfully!');
     }
+
+    public function faq()
+    {
+        $faq_data = Page::where('id',1)->first();
+        return view('admin.faq_page', compact('faq_data'));
+    }
+
+    public function faq_update(Request $request)
+    {
+        $obj = Page::where('id',1)->first();
+
+
+        $obj->faq_heading = $request->faq_heading;
+        $obj->faq_status = $request->faq_status;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Video gallery page is updated successfully!');
+    }
 }
