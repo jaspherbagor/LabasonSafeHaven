@@ -210,3 +210,8 @@ Route::post('/admin/page/video-gallery/update', [AdminPageController::class, 'vi
 Route::get('/admin/page/faq', [AdminPageController::class, 'faq'])->name('admin_faq_page')->middleware('admin:admin');
 
 Route::post('/admin/page/faq/update', [AdminPageController::class, 'faq_update'])->name('admin_faq_page_update')->middleware('admin:admin');
+
+
+Route::get('/admin/page/blog', [AdminPageController::class, 'blog'])->name('admin_blog_page')->middleware('admin:admin');
+
+Route::post('/admin/page/blog/update', [AdminPageController::class, 'blog_update'])->name('admin_blog_page_update')->middleware('admin:admin');

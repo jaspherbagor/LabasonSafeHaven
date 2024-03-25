@@ -126,6 +126,25 @@ class AdminPageController extends Controller
         $obj->faq_status = $request->faq_status;
         $obj->update();
 
-        return redirect()->back()->with('success', 'Video gallery page is updated successfully!');
+        return redirect()->back()->with('success', 'FAQ page is updated successfully!');
+    }
+
+
+    public function blog()
+    {
+        $blog_data = Page::where('id',1)->first();
+        return view('admin.blog_page', compact('blog_data'));
+    }
+
+    public function blog_update(Request $request)
+    {
+        $obj = Page::where('id',1)->first();
+
+
+        $obj->blog_heading = $request->blog_heading;
+        $obj->blog_status = $request->blog_status;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Blog page is updated successfully!');
     }
 }
