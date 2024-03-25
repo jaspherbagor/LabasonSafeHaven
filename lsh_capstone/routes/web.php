@@ -17,6 +17,7 @@ use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PhotoController;
+use App\Http\Controllers\Front\SubscriberController;
 use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\VideoController;
 use App\Models\Video;
@@ -46,6 +47,10 @@ Route::get('/terms-and-conditions', [TermsController::class, 'index'])->name('te
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 Route::post('/contact/send-email', [ContactController::class, 'send_email'])->name('contact_send_email');
+
+Route::post('/subscriber/send-email', [SubscriberController::class, 'send_email'])->name('subscriber_send_email');
+
+Route::get('/subscriber/verify/{email}/{token}', [SubscriberController::class, 'verify'])->name('subscriber_verify');
 
 /* Sample Customer Login Routes */ 
 // Route::get('/', [WebsiteController::class, 'index'])->name('home');
