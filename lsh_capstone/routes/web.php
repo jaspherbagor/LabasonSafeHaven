@@ -247,4 +247,8 @@ Route::get('/admin/page/signin', [AdminPageController::class, 'signin'])->name('
 Route::post('/admin/page/signin/update', [AdminPageController::class, 'signin_update'])->name('admin_signin_page_update')->middleware('admin:admin');
 
 
-Route::get('/admin/subscriber/view', [AdminSubscriberController::class, 'index'])->name('admin_subscriber_view')->middleware('admin:admin');
+Route::get('/admin/subscriber/show', [AdminSubscriberController::class, 'index'])->name('admin_subscriber_show')->middleware('admin:admin');
+
+Route::get('/admin/subscriber/send-email', [AdminSubscriberController::class, 'send_email'])->name('admin_subscriber_send_email')->middleware('admin:admin');
+
+Route::post('/admin/subscriber/send-email-submit', [AdminSubscriberController::class, 'submit_email'])->name('admin_subscriber_submit_email')->middleware('admin:admin');

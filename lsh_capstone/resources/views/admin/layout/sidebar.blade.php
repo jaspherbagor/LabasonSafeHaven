@@ -38,10 +38,11 @@
             <li class="{{ Request::is('admin/video/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_video_view') }}"><i class="fa fa-video-camera"></i> <span>Video Gallery</span></a></li>
             <li class="{{ Request::is('admin/faq/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_faq_view') }}"><i class="fa fa-question-circle"></i> <span>FAQs</span></a></li>
 
-            <li class="nav-item dropdown {{ Request::is('admin/subscriber/view') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('admin/subscriber/show') || Request::is('admin/subscriber/send-email') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fa fa-user"></i><span>Subscribers</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('admin/subscriber/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_subscriber_view') }}"><i class="fa fa-angle-right"></i>All Subscribers</a></li>
+                    <li class="{{ Request::is('admin/subscriber/show') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_subscriber_show') }}"><i class="fa fa-angle-right"></i>All Subscribers</a></li>
+                    <li class="{{ Request::is('admin/subscriber/send-email') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_subscriber_send_email') }}"><i class="fa fa-angle-right"></i>Send Email</a></li>
                 </ul>
             </li>
         </ul>
