@@ -229,3 +229,13 @@ Route::post('/admin/page/checkout/update', [AdminPageController::class, 'checkou
 Route::get('/admin/page/payment', [AdminPageController::class, 'payment'])->name('admin_payment_page')->middleware('admin:admin');
 
 Route::post('/admin/page/payment/update', [AdminPageController::class, 'payment_update'])->name('admin_payment_page_update')->middleware('admin:admin');
+
+
+Route::get('/admin/page/signup', [AdminPageController::class, 'signup'])->name('admin_signup_page')->middleware('admin:admin');
+
+Route::post('/admin/page/signup/update', [AdminPageController::class, 'signup_update'])->name('admin_signup_page_update')->middleware('admin:admin');
+
+
+Route::get('/admin/page/signin', [AdminPageController::class, 'signin'])->name('admin_signin_page')->middleware('admin:admin');
+
+Route::post('/admin/page/signin/update', [AdminPageController::class, 'signin_update'])->name('admin_signin_page_update')->middleware('admin:admin');
