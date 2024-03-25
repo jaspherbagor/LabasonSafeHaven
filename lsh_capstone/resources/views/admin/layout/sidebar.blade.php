@@ -11,7 +11,7 @@
 
             <li class="{{ Request::is('admin/home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home') }}"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
 
-            <li class="nav-item dropdown {{ Request::is('admin/page/about') ||Request::is('admin/page/terms') ||Request::is('admin/page/contact') || Request::is('admin/page/photo-gallery') || Request::is('admin/page/video-gallery') || Request::is('admin/page/faq') || Request::is('admin/page/blog') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('admin/page/about') ||Request::is('admin/page/terms') ||Request::is('admin/page/contact') || Request::is('admin/page/photo-gallery') || Request::is('admin/page/video-gallery') || Request::is('admin/page/faq') || Request::is('admin/page/blog') || Request::is('admin/page/cart') || Request::is('admin/page/checkout') || Request::is('admin/page/payment') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fa fa-book"></i><span>Pages</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/page/about') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_about_page') }}"><i class="fa fa-angle-right"></i> About</a></li>
@@ -21,6 +21,9 @@
                     <li class="{{ Request::is('admin/page/video-gallery') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_video_gallery_page') }}"><i class="fa fa-angle-right"></i> Video Gallery</a></li>
                     <li class="{{ Request::is('admin/page/faq') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_faq_page') }}"><i class="fa fa-angle-right"></i> FAQs</a></li>
                     <li class="{{ Request::is('admin/page/blog') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_blog_page') }}"><i class="fa fa-angle-right"></i> Blog</a></li>
+                    <li class="{{ Request::is('admin/page/cart') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_cart_page') }}"><i class="fa fa-angle-right"></i> Cart</a></li>
+                    <li class="{{ Request::is('admin/page/checkout') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_checkout_page') }}"><i class="fa fa-angle-right"></i> Checkout</a></li>
+                    <li class="{{ Request::is('admin/page/payment') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_payment_page') }}"><i class="fa fa-angle-right"></i> Payment</a></li>
                 </ul>
             </li>
 

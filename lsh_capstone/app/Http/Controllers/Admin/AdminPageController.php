@@ -192,7 +192,7 @@ class AdminPageController extends Controller
 
     public function payment()
     {
-        $blog_data = Page::where('id',1)->first();
+        $payment_data = Page::where('id',1)->first();
         return view('admin.payment_page', compact('payment_data'));
     }
 
@@ -202,7 +202,6 @@ class AdminPageController extends Controller
 
 
         $obj->payment_heading = $request->payment_heading;
-        $obj->payment_status = $request->payment_status;
         $obj->update();
 
         return redirect()->back()->with('success', 'Payment page is updated successfully!');
