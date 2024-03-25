@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminSlideController;
+use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Front\AboutController;
@@ -244,3 +245,6 @@ Route::post('/admin/page/signup/update', [AdminPageController::class, 'signup_up
 Route::get('/admin/page/signin', [AdminPageController::class, 'signin'])->name('admin_signin_page')->middleware('admin:admin');
 
 Route::post('/admin/page/signin/update', [AdminPageController::class, 'signin_update'])->name('admin_signin_page_update')->middleware('admin:admin');
+
+
+Route::get('/admin/subscriber/view', [AdminSubscriberController::class, 'index'])->name('admin_subscriber_view')->middleware('admin:admin');
