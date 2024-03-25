@@ -215,3 +215,17 @@ Route::post('/admin/page/faq/update', [AdminPageController::class, 'faq_update']
 Route::get('/admin/page/blog', [AdminPageController::class, 'blog'])->name('admin_blog_page')->middleware('admin:admin');
 
 Route::post('/admin/page/blog/update', [AdminPageController::class, 'blog_update'])->name('admin_blog_page_update')->middleware('admin:admin');
+
+
+Route::get('/admin/cart/blog', [AdminPageController::class, 'cart'])->name('admin_cart_page')->middleware('admin:admin');
+
+Route::post('/admin/page/cart/update', [AdminPageController::class, 'cart_update'])->name('admin_cart_page_update')->middleware('admin:admin');
+
+
+Route::get('/admin/checkout/blog', [AdminPageController::class, 'checkout'])->name('admin_checkout_page')->middleware('admin:admin');
+
+Route::post('/admin/page/checkout/update', [AdminPageController::class, 'checkout_update'])->name('admin_checkout_page_update')->middleware('admin:admin');
+
+Route::get('/admin/payment/blog', [AdminPageController::class, 'payment'])->name('admin_payment_page')->middleware('admin:admin');
+
+Route::post('/admin/page/payment/update', [AdminPageController::class, 'payment_update'])->name('admin_payment_page_update')->middleware('admin:admin');

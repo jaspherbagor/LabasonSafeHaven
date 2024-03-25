@@ -147,4 +147,64 @@ class AdminPageController extends Controller
 
         return redirect()->back()->with('success', 'Blog page is updated successfully!');
     }
+
+
+
+    public function cart()
+    {
+        $cart_data = Page::where('id',1)->first();
+        return view('admin.cart_page', compact('cart_data'));
+    }
+
+    public function cart_update(Request $request)
+    {
+        $obj = Page::where('id',1)->first();
+
+
+        $obj->cart_heading = $request->cart_heading;
+        $obj->cart_status = $request->cart_status;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Cart page is updated successfully!');
+    }
+
+
+
+    public function checkout()
+    {
+        $checkout_data = Page::where('id',1)->first();
+        return view('admin.checkout_page', compact('checkout_data'));
+    }
+
+    public function checkout_update(Request $request)
+    {
+        $obj = Page::where('id',1)->first();
+
+
+        $obj->checkout_heading = $request->checkout_heading;
+        $obj->checkout_status = $request->checkout_status;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Checkout page is updated successfully!');
+    }
+
+
+
+    public function payment()
+    {
+        $blog_data = Page::where('id',1)->first();
+        return view('admin.payment_page', compact('payment_data'));
+    }
+
+    public function payment_update(Request $request)
+    {
+        $obj = Page::where('id',1)->first();
+
+
+        $obj->payment_heading = $request->payment_heading;
+        $obj->payment_status = $request->payment_status;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Payment page is updated successfully!');
+    }
 }
