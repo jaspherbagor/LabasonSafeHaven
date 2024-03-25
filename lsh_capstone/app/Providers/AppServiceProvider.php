@@ -26,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        $about_data = Page::where('id',1)->first();
+        $page_data = Page::where('id',1)->first();
 
-        view()->share('global_page_data', $about_data);
+        view()->share('global_page_data', $page_data);
     }
 }
