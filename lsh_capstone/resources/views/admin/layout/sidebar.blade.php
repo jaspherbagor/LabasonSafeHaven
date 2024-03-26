@@ -13,7 +13,7 @@
 
 
             <li class="nav-item dropdown {{ Request::is('admin/amenity/view') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fa fa-user"></i><span>Hotel Section</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fa fa-building-o"></i><span>Hotel Section</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/amenity/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_amenity_view') }}"><i class="fa fa-angle-right"></i>Amenities</a></li>
                     <li class=""><a class="nav-link" href=""><i class="fa fa-angle-right"></i>Rooms</a></li>
