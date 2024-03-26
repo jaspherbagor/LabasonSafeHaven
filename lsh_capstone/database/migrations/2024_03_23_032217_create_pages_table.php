@@ -22,7 +22,9 @@ return new class extends Migration
             $table->text('terms_content');
             $table->integer('terms_status');
 
-
+            $table->text('privacy_heading');
+            $table->text('privacy_content');
+            $table->integer('privacy_status');
 
             $table->text('contact_heading');
             $table->text('contact_map')->nullable();

@@ -191,7 +191,9 @@ Route::get('/admin/page/terms', [AdminPageController::class, 'terms'])->name('ad
 
 Route::post('/admin/page/terms/update', [AdminPageController::class, 'terms_update'])->name('admin_terms_page_update')->middleware('admin:admin');
 
+Route::get('/admin/page/privacy', [AdminPageController::class, 'privacy'])->name('admin_privacy_page')->middleware('admin:admin');
 
+Route::post('/admin/page/privacy/update', [AdminPageController::class, 'privacy_update'])->name('admin_privacy_page_update')->middleware('admin:admin');
 
 
 
