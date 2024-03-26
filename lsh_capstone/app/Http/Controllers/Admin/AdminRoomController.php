@@ -14,10 +14,10 @@ class AdminRoomController extends Controller
         return view('admin.room_view', compact('rooms'));
     }
 
-    // public function add()
-    // {
-    //     return view('admin.slide_add');
-    // }
+    public function add()
+    {
+        return view('admin.room_add');
+    }
 
     // public function store(Request $request)
     // {
