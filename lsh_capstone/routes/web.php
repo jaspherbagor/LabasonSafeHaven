@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminAmenityController;
 use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminFeatureController;
@@ -170,8 +171,6 @@ Route::post('/admin/video/update/{id}', [AdminVideoController::class, 'update'])
 Route::get('/admin/video/delete/{id}', [AdminVideoController::class, 'delete'])->name('admin_video_delete')->middleware('admin:admin');
 
 
-
-
 Route::get('/admin/faq/view', [AdminFaqController::class, 'index'])->name('admin_faq_view')->middleware('admin:admin');
 
 Route::get('/admin/faq/add', [AdminFaqController::class, 'add'])->name('admin_faq_add')->middleware('admin:admin');
@@ -256,3 +255,18 @@ Route::get('/admin/subscriber/show', [AdminSubscriberController::class, 'index']
 Route::get('/admin/subscriber/send-email', [AdminSubscriberController::class, 'send_email'])->name('admin_subscriber_send_email')->middleware('admin:admin');
 
 Route::post('/admin/subscriber/send-email-submit', [AdminSubscriberController::class, 'submit_email'])->name('admin_subscriber_submit_email')->middleware('admin:admin');
+
+
+
+
+Route::get('/admin/amenity/view', [AdminAmenityController::class, 'index'])->name('admin_amenity_view')->middleware('admin:admin');
+
+Route::get('/admin/amenity/add', [AdminAmenityController::class, 'add'])->name('admin_amenity_add')->middleware('admin:admin');
+
+Route::post('/admin/amenity/store', [AdminAmenityController::class, 'store'])->name('admin_amenity_store')->middleware('admin:admin');
+
+Route::get('/admin/amenity/edit/{id}', [AdminAmenityController::class, 'edit'])->name('admin_amenity_edit')->middleware('admin:admin');
+
+Route::post('/admin/amenity/update/{id}', [AdminAmenityController::class, 'update'])->name('admin_amenity_update')->middleware('admin:admin');
+
+Route::get('/admin/amenity/delete/{id}', [AdminAmenityController::class, 'delete'])->name('admin_amenity_delete')->middleware('admin:admin');
