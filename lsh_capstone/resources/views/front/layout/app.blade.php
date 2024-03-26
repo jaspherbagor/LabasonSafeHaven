@@ -173,8 +173,9 @@
                                 @if($global_page_data->terms_status === 1)
                                 <li><a href="{{ route('terms') }}">Terms and Conditions</a></li>
                                 @endif
-
-                                <li><a href="privacy.html">Privacy Policy</a></li>
+                                @if($global_page_data->privacy_status === 1)
+                                <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
+                                @endif
                                 @if($global_page_data->faq_status === 1)
                                 <li><a href="{{ route('faq') }}">FAQ</a></li>
                                 @endif

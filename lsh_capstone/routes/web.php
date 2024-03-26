@@ -18,6 +18,7 @@ use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PhotoController;
+use App\Http\Controllers\Front\PrivacyController;
 use App\Http\Controllers\Front\SubscriberController;
 use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\VideoController;
@@ -43,6 +44,7 @@ Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 
 Route::get('/terms-and-conditions', [TermsController::class, 'index'])->name('terms');
 
+Route::get('/privacy-policy', [PrivacyController::class, 'index'])->name('privacy');
 
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
