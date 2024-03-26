@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('heading', 'Add Amenity')
+@section('heading', 'Edit FAQ')
 
 @section('right_top_button')
 <a href="{{ route('admin_amenity_view') }}" class="btn btn-primary"><i class="fa fa-eye"></i> View All</a>
@@ -12,17 +12,17 @@
         <div class="col-6">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin_amenity_store') }}" method="post">
+                    <form action="{{ route('admin_amenity_update',$amenity_data->id) }}" method="post">
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mb-4">
-                                    <label class="form-label">Name *</label>
-                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}"">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control" name="name" value="{{ $amenity_data->name }}">
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label"></label>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </div>
                         </div>
