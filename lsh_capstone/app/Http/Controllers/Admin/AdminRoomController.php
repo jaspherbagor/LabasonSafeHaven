@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Amenity;
 use App\Models\Room;
 use Illuminate\Http\Request;
 
@@ -16,32 +17,45 @@ class AdminRoomController extends Controller
 
     public function add()
     {
-        return view('admin.room_add');
+        $all_amenities = Amenity::get();
+        return view('admin.room_add', compact('all_amenities'));
     }
 
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'photo' => 'required|image|mimes:jpg,jpeg,png,svg,webp,gif|max:5120'
-    //     ]);
+    public function store(Request $request)
+    {
+        dd($request->arr_amenities);
+        $request->validate([
+            'featured_photo' => 'required|image|mimes:jpg,jpeg,png,svg,webp,gif|max:5120',
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'total_rooms' => 'required'
+        ]);
 
         
 
-    //     $ext = $request->file('photo')->extension();
-    //     $final_name = time().'.'.$ext;
+        $ext = $request->file('featured_photo')->extension();
+        $final_name = time().'.'.$ext;
 
-    //     $request->file('photo')->move(public_path('uploads/'),$final_name);
+        $request->file('photo')->move(public_path('uploads/'),$final_name);
 
-    //     $obj = new Slide();
-    //     $obj->photo = $final_name;
-    //     $obj->heading = $request->heading;
-    //     $obj->text = $request->text;
-    //     $obj->button_text = $request->button_text;
-    //     $obj->button_url = $request->button_url;
-    //     $obj->save();
+        $obj = new Room();
+        $obj->featured_photo = $final_name;
+        $obj->name = $request->name;
+        $obj->description = $request->description;
+        $obj->price = $request->price;
+        $obj->total_rooms = $request->total_rooms;
+        $obj->amenities = $request->amenities;
+        $obj->size = $request->size;
+        $obj->total_beds = $request->total_beds;
+        $obj->total_bathrooms = $request->total_bathrooms;
+        $obj->total_balconies = $request->total_balconies;
+        $obj->guests = $request->guests;
+        $obj->video_id = $request->video_id;
+        $obj->save();
 
-    //     return redirect()->back()->with('success', 'Slide is added successfully!');
-    // }
+        return redirect()->back()->with('success', 'Slide is added successfully!');
+    }
 
     // public function edit($id)
     // {
