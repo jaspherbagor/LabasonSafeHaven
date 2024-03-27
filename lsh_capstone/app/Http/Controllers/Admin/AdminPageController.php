@@ -67,8 +67,8 @@ class AdminPageController extends Controller
 
     public function room()
     {
-        $page_data = Page::where('id',1)->first();
-        return view('admin.room_page', compact('page_data'));
+        $room_data = Page::where('id',1)->first();
+        return view('admin.room_page', compact('room_data'));
     }
 
     public function room_update(Request $request)

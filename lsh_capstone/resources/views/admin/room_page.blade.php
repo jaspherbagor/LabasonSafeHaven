@@ -14,7 +14,7 @@
                             <div class="col-md-12">
                                 <div class="mb-4">
                                     <label class="form-label">Heading</label>
-                                    <input type="text" class="form-control" name="blog_heading" value="{{ $room_data->room_heading }}">
+                                    <input type="text" class="form-control" name="room_heading" value="{{ $room_data->room_heading }}">
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label"></label>

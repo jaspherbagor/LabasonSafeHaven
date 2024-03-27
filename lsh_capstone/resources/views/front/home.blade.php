@@ -103,13 +103,13 @@
                     </div>
                     <div class="text">
                         <h2>
-                            <a href="">{{ $item->name }}</a>
+                            <a href="{{ route('room_detail',$item->id) }}">{{ $item->name }}</a>
                         </h2>
                         <div class="price">
                             ₱{{ $item->price }} per night
                         </div>
                         <div class="button">
-                            <a href="room-detail.html" class="btn btn-primary">See Detail</a>
+                            <a href="{{ route('room_detail',$item->id) }}" class="btn btn-primary">See Detail</a>
                         </div>
                     </div>
                 </div>
