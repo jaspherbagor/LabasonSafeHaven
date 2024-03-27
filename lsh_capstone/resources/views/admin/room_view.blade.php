@@ -28,7 +28,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td><img src="{{ asset('uploads/'.$row->featured_photo) }}" alt="slide_image" class="w_200"></td>
                                         <td>{{ $row->name }}</td>
-                                        <td>{{ $row->price }}</td>
+                                        <td>₱{{ $row->price }}</td>
                                         <td class="pt_10 pb_10">
                                             <a href="{{ route('admin_room_edit',$row->id) }}" class="btn btn-primary">Edit</a>
                                             <a href="{{ route('admin_room_delete',$row->id) }}" class="btn btn-danger" onClick="return confirm('Are you sure?');">Delete</a>
