@@ -1,7 +1,9 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
-        <div class="sidebar-brand">
-            <a href="{{ route('admin_home') }}">Admin Panel</a>
+        <div class="sidebar-brand py-1">
+            <a href="{{ route('admin_home') }}">
+                <img src="{{ asset('uploads/logo.png') }}" alt="" class="logo py-1">
+            </a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="{{ route('admin_home') }}"></a>
