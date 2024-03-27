@@ -94,15 +94,19 @@
             </div>
         </div>
         <div class="row">
+
+            @foreach($room_all as $item)
             <div class="col-md-3">
                 <div class="inner">
                     <div class="photo">
-                        <img src="uploads/1.jpg" alt="">
+                        <img src="{{ asset('uploads/'.$item->featured_photo) }}" alt="">
                     </div>
                     <div class="text">
-                        <h2><a href="">Maravillas Boarding House</a></h2>
+                        <h2>
+                            <a href="">{{ $item->name }}</a>
+                        </h2>
                         <div class="price">
-                            ₱3600/month
+                            ₱{{ $item->price }} per night
                         </div>
                         <div class="button">
                             <a href="room-detail.html" class="btn btn-primary">See Detail</a>
@@ -110,119 +114,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="inner">
-                    <div class="photo">
-                        <img src="uploads/2.jpg" alt="">
-                    </div>
-                    <div class="text">
-                        <h2><a href="">Ember's House</a></h2>
-                        <div class="price">
-                            ₱400/night
-                        </div>
-                        <div class="button">
-                            <a href="room-detail.html" class="btn btn-primary">See Detail</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="inner">
-                    <div class="photo">
-                        <img src="uploads/3.jpg" alt="">
-                    </div>
-                    <div class="text">
-                        <h2><a href="">Abetom Apartment</a></h2>
-                        <div class="price">
-                            ₱4000/month
-                        </div>
-                        <div class="button">
-                            <a href="room-detail.html" class="btn btn-primary">See Detail</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="inner">
-                    <div class="photo">
-                        <img src="uploads/4.jpg" alt="">
-                    </div>
-                    <div class="text">
-                        <h2><a href="">Bayangan Hotel</a></h2>
-                        <div class="price">
-                            ₱800/night
-                        </div>
-                        <div class="button">
-                            <a href="room-detail.html" class="btn btn-primary">See Detail</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- <div class="col-md-3">
-                <div class="inner">
-                    <div class="photo">
-                        <img src="uploads/5.jpg" alt="">
-                    </div>
-                    <div class="text">
-                        <h2><a href="">Standard Couple Bed</a></h2>
-                        <div class="price">
-                            $100/night
-                        </div>
-                        <div class="button">
-                            <a href="room-detail.html" class="btn btn-primary">See Detail</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="inner">
-                    <div class="photo">
-                        <img src="uploads/6.jpg" alt="">
-                    </div>
-                    <div class="text">
-                        <h2><a href="">Standard Couple Bed</a></h2>
-                        <div class="price">
-                            $100/night
-                        </div>
-                        <div class="button">
-                            <a href="room-detail.html" class="btn btn-primary">See Detail</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="inner">
-                    <div class="photo">
-                        <img src="uploads/7.jpg" alt="">
-                    </div>
-                    <div class="text">
-                        <h2><a href="">Standard Couple Bed</a></h2>
-                        <div class="price">
-                            $100/night
-                        </div>
-                        <div class="button">
-                            <a href="room-detail.html" class="btn btn-primary">See Detail</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="inner">
-                    <div class="photo">
-                        <img src="uploads/1.jpg" alt="">
-                    </div>
-                    <div class="text">
-                        <h2><a href="">Standard Couple Bed</a></h2>
-                        <div class="price">
-                            $100/night
-                        </div>
-                        <div class="button">
-                            <a href="room-detail.html" class="btn btn-primary">See Detail</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
+            @endforeach
+            
         <div class="row">
             <div class="col-md-12">
                 <div class="big-button">

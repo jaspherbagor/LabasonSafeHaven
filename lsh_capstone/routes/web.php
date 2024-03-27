@@ -14,6 +14,9 @@ use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminVideoController;
+
+
+
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\ContactController;
@@ -21,10 +24,10 @@ use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PhotoController;
 use App\Http\Controllers\Front\PrivacyController;
+use App\Http\Controllers\Front\RoomController;
 use App\Http\Controllers\Front\SubscriberController;
 use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\VideoController;
-use App\Models\Video;
 // use App\Http\Controllers\Customer\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,6 +59,9 @@ Route::post('/contact/send-email', [ContactController::class, 'send_email'])->na
 Route::post('/subscriber/send-email', [SubscriberController::class, 'send_email'])->name('subscriber_send_email');
 
 Route::get('/subscriber/verify/{email}/{token}', [SubscriberController::class, 'verify'])->name('subscriber_verify');
+
+Route::get('/room/{id}', [RoomController::class, 'index'])->name('room');
+
 
 /* Sample Customer Login Routes */ 
 // Route::get('/', [WebsiteController::class, 'index'])->name('home');
