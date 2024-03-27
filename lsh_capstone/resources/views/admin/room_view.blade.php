@@ -32,8 +32,9 @@
                                         <td>{{ $row->name }}</td>
                                         <td>₱{{ $row->price }}</td>
                                         <td class="pt_10 pb_10">
-                                            <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal{{ $i }}">Detail</button>
-                                            <a href="{{ route('admin_room_edit',$row->id) }}" class="btn btn-primary">Edit</a>
+                                            <button class="btn btn-warning mb-md-0 mb-1" data-toggle="modal" data-target="#exampleModal{{ $i }}">Detail</button>
+                                            <a href="{{ route('admin_room_gallery',$row->id) }}" class="btn btn-success mb-md-0 mb-1">Photo Gallery</a>
+                                            <a href="{{ route('admin_room_edit',$row->id) }}" class="btn btn-primary mb-md-0 mb-1">Edit</a>
                                             <a href="{{ route('admin_room_delete',$row->id) }}" class="btn btn-danger" onClick="return confirm('Are you sure?');">Delete</a>
                                         </td>
                                         <div class="modal fade" id="exampleModal{{ $i }}" tabindex="-1" aria-hidden="true">
