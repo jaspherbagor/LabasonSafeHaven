@@ -28,7 +28,6 @@ use App\Http\Controllers\Front\RoomController;
 use App\Http\Controllers\Front\SubscriberController;
 use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\VideoController;
-// use App\Http\Controllers\Customer\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -51,7 +50,6 @@ Route::get('/terms-and-conditions', [TermsController::class, 'index'])->name('te
 
 Route::get('/privacy-policy', [PrivacyController::class, 'index'])->name('privacy');
 
-
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 Route::post('/contact/send-email', [ContactController::class, 'send_email'])->name('contact_send_email');
@@ -65,12 +63,7 @@ Route::get('/room', [RoomController::class, 'index'])->name('room');
 Route::get('/room/{id}', [RoomController::class, 'single_room'])->name('room_detail');
 
 
-/* Sample Customer Login Routes */ 
-// Route::get('/', [WebsiteController::class, 'index'])->name('home');
 
-// Route::get('/register', [WebsiteController::class, 'register'])->name('register');
-
-// Route::get('/login', [WebsiteController::class, 'login'])->name('login');
 
 /* Admin Routes */
 
@@ -204,11 +197,6 @@ Route::post('/admin/page/terms/update', [AdminPageController::class, 'terms_upda
 Route::get('/admin/page/privacy', [AdminPageController::class, 'privacy'])->name('admin_privacy_page')->middleware('admin:admin');
 
 Route::post('/admin/page/privacy/update', [AdminPageController::class, 'privacy_update'])->name('admin_privacy_page_update')->middleware('admin:admin');
-
-
-
-
-
 
 
 Route::get('/admin/page/contact', [AdminPageController::class, 'contact'])->name('admin_contact_page')->middleware('admin:admin');
