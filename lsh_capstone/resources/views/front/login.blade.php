@@ -36,10 +36,13 @@
                         </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary bg-website">Login</button>
-                            <a href="{{ route('customer_forget_password') }}" class="primary-color">Forget Password?</a>
+                            
                         </div>
                         <div class="mb-3">
-                            <a href="{{ route('customer_signup') }}" class="primary-color">New User? Make Registration</a>
+                            <a href="" class="primary-color">Forget Password?</a>
+                            <br>
+                            Don't have an account yet?
+                            <a href="{{ route('customer_signup') }}" class="primary-color">Register instead.</a>
                         </div>
                     </div>
                 </form>

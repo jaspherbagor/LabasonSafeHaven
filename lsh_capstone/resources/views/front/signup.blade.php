@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-4">
-                <form action="{{ route('customer_signup_submit') }}" method="post">
+                <form action="" method="post">
                     @csrf
                     <div class="login-form">
                         <div class="mb-3">
@@ -51,7 +51,8 @@
                             <button type="submit" class="btn btn-primary bg-website">Submit</button>
                         </div>
                         <div class="mb-3">
-                            <a href="{{ route('customer_login') }}" class="primary-color">Existing User? Login Now</a>
+                            Already have an account?
+                            <a href="{{ route('customer_login') }}" class="primary-color"> Login instead.</a>
                         </div>
                     </div>
                 </form>
