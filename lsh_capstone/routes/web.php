@@ -60,7 +60,9 @@ Route::post('/subscriber/send-email', [SubscriberController::class, 'send_email'
 
 Route::get('/subscriber/verify/{email}/{token}', [SubscriberController::class, 'verify'])->name('subscriber_verify');
 
-Route::get('/room/{id}', [RoomController::class, 'index'])->name('room');
+Route::get('/room', [RoomController::class, 'index'])->name('room');
+
+Route::get('/room/{id}', [RoomController::class, 'single_room'])->name('room_detail');
 
 
 /* Sample Customer Login Routes */ 
@@ -231,6 +233,12 @@ Route::post('/admin/page/faq/update', [AdminPageController::class, 'faq_update']
 Route::get('/admin/page/blog', [AdminPageController::class, 'blog'])->name('admin_blog_page')->middleware('admin:admin');
 
 Route::post('/admin/page/blog/update', [AdminPageController::class, 'blog_update'])->name('admin_blog_page_update')->middleware('admin:admin');
+
+
+Route::get('/admin/page/room', [AdminPageController::class, 'room'])->name('admin_room_page')->middleware('admin:admin');
+
+Route::post('/admin/page/room/update', [AdminPageController::class, 'room_update'])->name('admin_room_page_update')->middleware('admin:admin');
+
 
 
 Route::get('/admin/page/cart', [AdminPageController::class, 'cart'])->name('admin_cart_page')->middleware('admin:admin');
