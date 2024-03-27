@@ -46,11 +46,10 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="{{ $item->id }}" id="defaultCheck{{ $i }}" name="arr_amenities[]">
                                         <label class="form-check-label" for="defaultCheck{{ $i }}">
-                                          {{ $item->name }}
+                                            {{ $item->name }}
                                         </label>
                                     </div>
                                     @endforeach
-                                    
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Room Size</label>
