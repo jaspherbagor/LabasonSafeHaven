@@ -11,7 +11,13 @@
                     <a href="{{ route('home') }}" target="_blank" class="btn btn-secondary text-dark">Visit Website</a>
                 </li>
                 <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+
+                    @if(Auth::guard('customer')->user()->photo == '')
+                    <img alt="image" src="{{ asset('uploads/default.png') }}" class="rounded-circle mr-1">
+                    @else
                     <img alt="image" src="{{ asset('uploads/'.Auth::guard('customer')->user()->photo) }}" class="rounded-circle mr-1">
+                    @endif
+                    
                     <div class="d-sm-none d-lg-inline-block">{{ Auth::guard('customer')->user()->name }}</div></a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a href="{{ route('customer_profile') }}" class="dropdown-item has-icon">
