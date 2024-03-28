@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
 
-    <link rel="icon" type="image/png" href="{{ asset('uploads/lsh_favicon_admin.svg') }}">
-    <title>Labason Safe Haven - Admin</title>
+    @if(Auth::guard('customer')->user()->photo == '')
+    <link rel="icon" type="image/png" href="{{ asset('uploads/default.png') }}">
+    @else
+    <link rel="icon" type="image/png" href="{{ asset('uploads/'.Auth::guard('customer')->user()->photo) }}">
+    @endif
+    <title>Labason Safe Haven - Dashboard</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 

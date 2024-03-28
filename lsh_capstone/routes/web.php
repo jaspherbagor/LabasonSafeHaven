@@ -94,8 +94,7 @@ Route::post('/reset-password-submit', [CustomerAuthController::class, 'reset_pas
 Route::group(['middleware' => ['customer:customer']], function() {
     Route::get('/customer/home', [CustomerHomeController::class, 'index'])->name('customer_home');
     Route::get('/customer/edit-profile', [CustomerProfileController::class, 'index'])->name('customer_profile');
-
-    Route::post('/customer/edit-profile-submit', [CustomerProfileController::class, 'profileSubmit'])->name('customer_profile_submit');
+    Route::post('/customer/edit-profile-submit', [CustomerProfileController::class, 'profile_submit'])->name('customer_profile_submit');
 });
 
 

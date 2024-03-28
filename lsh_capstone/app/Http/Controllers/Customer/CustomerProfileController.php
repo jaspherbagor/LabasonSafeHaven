@@ -34,7 +34,7 @@ class CustomerProfileController extends Controller
 
         if($request->hasFile('photo')) {
             $request->validate([
-                'photo' => 'image|mimes:jpg,jpeg,png,gif'
+                'photo' => 'image|mimes:jpg,jpeg,png,gif,svg,webp|max:5120'
             ]);
 
             if($customer_data->photo != NULL) {
