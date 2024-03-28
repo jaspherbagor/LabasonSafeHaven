@@ -19,6 +19,7 @@ use App\Http\Controllers\Customer\CustomerHomeController;
 use App\Http\Controllers\Customer\CustomerProfileController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\BlogController;
+use App\Http\Controllers\Front\BookingController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\HomeController;
@@ -61,6 +62,16 @@ Route::get('/subscriber/verify/{email}/{token}', [SubscriberController::class, '
 Route::get('/room', [RoomController::class, 'index'])->name('room');
 
 Route::get('/room/{id}', [RoomController::class, 'single_room'])->name('room_detail');
+
+Route::post('/booking/submit', [BookingController::class, 'cart_submit'])->name('cart_submit');
+
+Route::get('/cart', [BookingController::class, 'cart_view'])->name('cart');
+
+Route::get('/cart/delete/{id}', [BookingController::class, 'cart_delete'])->name('cart_delete');
+
+Route::get('/checkout', [BookingController::class, 'checkout'])->name('checkout');
+
+Route::post('/payment', [BookingController::class, 'payment'])->name('payment');
 
 
 
