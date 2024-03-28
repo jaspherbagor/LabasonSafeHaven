@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\BookedRoom;
 use App\Models\Room;
 use Illuminate\Http\Request;
 
@@ -16,46 +17,46 @@ class BookingController extends Controller
             'adult' => 'required'
         ]);
 
-        // $dates = explode(' - ',$request->checkin_checkout);
-        // $checkin_date = $dates[0];
-        // $checkout_date = $dates[1];
+        $dates = explode(' - ',$request->checkin_checkout);
+        $checkin_date = $dates[0];
+        $checkout_date = $dates[1];
 
-        // $d1 = explode('/',$checkin_date);
-        // $d2 = explode('/',$checkout_date);
-        // $d1_new = $d1[2].'-'.$d1[1].'-'.$d1[0];
-        // $d2_new = $d2[2].'-'.$d2[1].'-'.$d2[0];
-        // $t1 = strtotime($d1_new);
-        // $t2 = strtotime($d2_new);
+        $d1 = explode('/',$checkin_date);
+        $d2 = explode('/',$checkout_date);
+        $d1_new = $d1[2].'-'.$d1[1].'-'.$d1[0];
+        $d2_new = $d2[2].'-'.$d2[1].'-'.$d2[0];
+        $t1 = strtotime($d1_new);
+        $t2 = strtotime($d2_new);
 
-        // $cnt = 1;
-        // while(1) {
-        //     if($t1>=$t2) {
-        //         break;
-        //     }
-        //     $single_date = date('d/m/Y',$t1);
-        //     $total_already_booked_rooms = BookedRoom::where('booking_date',$single_date)->where('room_id',$request->room_id)->count();
+        $cnt = 1;
+        while(1) {
+            if($t1>=$t2) {
+                break;
+            }
+            $single_date = date('d/m/Y',$t1);
+            $total_already_booked_rooms = BookedRoom::where('booking_date',$single_date)->where('room_id',$request->room_id)->count();
 
-        //     $arr = Room::where('id',$request->room_id)->first();
-        //     $total_allowed_rooms = $arr->total_rooms;
+            $arr = Room::where('id',$request->room_id)->first();
+            $total_allowed_rooms = $arr->total_rooms;
 
-        //     if($total_already_booked_rooms == $total_allowed_rooms) {
-        //         $cnt = 0;
-        //         break;
-        //     }
-        //     $t1 = strtotime('+1 day',$t1);
-        // }
+            if($total_already_booked_rooms == $total_allowed_rooms) {
+                $cnt = 0;
+                break;
+            }
+            $t1 = strtotime('+1 day',$t1);
+        }
 
-        // if($cnt == 0) {
-        //     return redirect()->back()->with('error', 'Maximum number of this room is already booked');
-        // }        
+        if($cnt == 0) {
+            return redirect()->back()->with('error', 'Maximum number of this room is already booked');
+        }        
         
-        // session()->push('cart_room_id',$request->room_id);
-        // session()->push('cart_checkin_date',$checkin_date);
-        // session()->push('cart_checkout_date',$checkout_date);
-        // session()->push('cart_adult',$request->adult);
-        // session()->push('cart_children',$request->children);
+        session()->push('cart_room_id',$request->room_id);
+        session()->push('cart_checkin_date',$checkin_date);
+        session()->push('cart_checkout_date',$checkout_date);
+        session()->push('cart_adult',$request->adult);
+        session()->push('cart_children',$request->children);
 
-        // return redirect()->back()->with('success', 'Room is added to the cart successfully.');
+        return redirect()->back()->with('success', 'Room is added to the cart successfully.');
     }
 
     public function cart_view()
