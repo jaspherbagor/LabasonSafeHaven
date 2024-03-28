@@ -86,7 +86,7 @@
                                     <td>
                                         <a href="{{ route('room_detail',$room_data->id) }}" class="room-name">{{ $room_data->name }}</a>
                                     </td>
-                                    <td>${{ $room_data->price }}</td>
+                                    <td>₱{{ $room_data->price }}</td>
                                     <td>{{ $arr_cart_checkin_date[$i] }}</td>
                                     <td>{{ $arr_cart_checkout_date[$i] }}</td>
                                     <td>

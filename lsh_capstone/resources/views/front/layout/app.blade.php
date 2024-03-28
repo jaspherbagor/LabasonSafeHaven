@@ -103,6 +103,9 @@
                                     <a href="javascript:void;" class="nav-link dropdown-toggle">Accommodations</a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
+                                            <a href="{{ route('room') }}" class="nav-link">All Accommodations</a>
+                                        </li>
+                                        <li class="nav-item">
                                             <a href="room-detail.html" class="nav-link">Hotel</a>
                                         </li>
                                         <li class="nav-item">
