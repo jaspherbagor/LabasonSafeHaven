@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>{{ $global_page_data->signup_heading }}</h2>
+                <h2>{{ $global_page_data->reset_password_heading }}</h2>
             </div>
         </div>
     </div>
@@ -16,23 +16,12 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-4">
-                <form action="{{ route('customer_signup_submit') }}" method="post">
+
+                <form action="{{ route('customer_reset_password_submit') }}" method="post">
                     @csrf
+                    <input type="hidden" name="token" value="{{ $token }}">
+                    <input type="hidden" name="email" value="{{ $email }}">
                     <div class="login-form">
-                        <div class="mb-3">
-                            <label for="" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" name="name">
-                            @if($errors->has('name'))
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
-                            @endif
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Email Address</label>
-                            <input type="text" class="form-control" name="email">
-                            @if($errors->has('email'))
-                                <span class="text-danger">{{ $errors->first('email') }}</span>
-                            @endif
-                        </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Password</label>
                             <input type="password" class="form-control" name="password">
@@ -41,21 +30,18 @@
                             @endif
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Confirm Password</label>
+                            <label for="" class="form-label">Retype Password</label>
                             <input type="password" class="form-control" name="retype_password">
                             @if($errors->has('retype_password'))
                                 <span class="text-danger">{{ $errors->first('retype_password') }}</span>
                             @endif
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary bg-website">Submit</button>
-                        </div>
-                        <div class="mb-3">
-                            Already have an account?
-                            <a href="{{ route('customer_login') }}" class="primary-color"> Login instead.</a>
+                            <button type="submit" class="btn btn-primary bg-website">Update</button>
                         </div>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>

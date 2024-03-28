@@ -67,12 +67,23 @@ Route::get('/room/{id}', [RoomController::class, 'single_room'])->name('room_det
 /* Customer Routes */
 Route::get('/login', [CustomerAuthController::class, 'login'])->name('customer_login');
 
-Route::post('/login-submit', [CustomerAuthController::class, 'login_submit'])->name('customer_login_submit'); 
+Route::post('/login-submit', [CustomerAuthController::class, 'login_submit'])->name('customer_login_submit');
 
-Route::get('/logout', [CustomerAuthController::class, 'logout'])->name('customer_logout');
+Route::get('/customer/logout', [CustomerAuthController::class, 'logout'])->name('customer_logout');
 
 Route::get('/signup', [CustomerAuthController::class, 'signup'])->name('customer_signup');
 
+Route::post('/signup-submit', [CustomerAuthController::class, 'signup_submit'])->name('customer_signup_submit');
+
+Route::get('/signup-verify/{email}/{token}', [CustomerAuthController::class, 'signup_verify'])->name('customer_signup_verify');
+
+Route::get('/forget-password', [CustomerAuthController::class, 'forget_password'])->name('customer_forget_password');
+
+Route::post('/forget-password-submit', [CustomerAuthController::class, 'forget_password_submit'])->name('customer_forget_password_submit');
+
+Route::get('/reset-password/{token}/{email}', [CustomerAuthController::class, 'reset_password'])->name('customer_reset_password');
+
+Route::post('/reset-password-submit', [CustomerAuthController::class, 'reset_password_submit'])->name('customer_reset_password_submit');
 
 
 
