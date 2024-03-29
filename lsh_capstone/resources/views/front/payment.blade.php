@@ -83,11 +83,12 @@
                     @php
                     $cents = $total_price*100;
                     $customer_email = Auth::guard('customer')->user()->email;
-                    $stripe_publishable_key = 'pk_test_51LT28GF67T3XLjgLXbAMW8YNgvDyv6Yrg7mB6yHJhfmWgLrAL79rSBPvxcbKrsKtCesqJmxlOd259nMrNx4Qlhoa00zX7rOhOq';
+                    // $stripe_publishable_key = 'pk_test_51LT28GF67T3XLjgLXbAMW8YNgvDyv6Yrg7mB6yHJhfmWgLrAL79rSBPvxcbKrsKtCesqJmxlOd259nMrNx4Qlhoa00zX7rOhOq';
+                    // {{ route('stripe',$total_price) }}
                     @endphp
-                    <form action="{{ route('stripe',$total_price) }}" method="post">
+                    <form action="" method="post">
                         @csrf
-                        <script
+                        {{-- <script
                             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                             data-key="{{ $stripe_publishable_key }}"
                             data-amount="{{ $cents }}"
@@ -97,37 +98,37 @@
                             data-currency="usd"
                             data-email="{{ $customer_email }}"
                         >
-                        </script>
+                        </script> --}}
                     </form>
                 </div>
 
             </div>
             <div class="col-lg-4 col-md-4 checkout-right">
                 <div class="inner">
-                    <h4 class="mb_10">Billing Details</h4>
+                    <h4 class="mb_10">Billing Info</h4>
                     <div>
-                        Name: {{ session()->get('billing_name') }}
+                        Name: <span class="fw-bold">{{ session()->get('billing_name') }}</span>
                     </div>
                     <div>
-                        Email: {{ session()->get('billing_email') }}
+                        Email: <span class="fw-bold">{{ session()->get('billing_email') }}</span>
                     </div>
                     <div>
-                        Phone: {{ session()->get('billing_phone') }}
+                        Phone: <span class="fw-bold">{{ session()->get('billing_phone') }}</span>
                     </div>
                     <div>
-                        Country: {{ session()->get('billing_country') }}
+                        Country: <span class="fw-bold">{{ session()->get('billing_country') }}</span>
                     </div>
                     <div>
-                        Address: {{ session()->get('billing_address') }}
+                        Address: <span class="fw-bold">{{ session()->get('billing_address') }}</span>
                     </div>
                     <div>
-                        State: {{ session()->get('billing_state') }}
+                        Province: <span class="fw-bold">{{ session()->get('billing_province') }}</span>
                     </div>
                     <div>
-                        City: {{ session()->get('billing_city') }}
+                        City: <span class="fw-bold">{{ session()->get('billing_city') }}</span>
                     </div>
                     <div>
-                        Zip: {{ session()->get('billing_zip') }}
+                        Zip: <span class="fw-bold">{{ session()->get('billing_zip') }}</span>
                     </div>
                 </div>
             </div>
@@ -196,7 +197,7 @@
                                                 $t1 = strtotime($d1_new);
                                                 $t2 = strtotime($d2_new);
                                                 $diff = ($t2-$t1)/60/60/24;
-                                                echo '$'.$room_data->price*$diff;
+                                                echo '₱'.number_format($room_data->price*$diff, 2);
                                             @endphp
                                         </td>
                                     </tr>
@@ -206,7 +207,7 @@
                                 @endphp                                
                                 <tr>
                                     <td><b>Total:</b></td>
-                                    <td class="p_price"><b>${{ $total_price }}</b></td>
+                                    <td class="p_price"><b>₱{{ number_format($total_price, 2) }}</b></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -217,7 +218,7 @@
     </div>
 </div>
 
-@php
+{{-- @php
 $client = 'ARw2VtkTvo3aT7DILgPWeSUPjMK_AS5RlMKkUmB78O8rFCJcfX6jFSmTDpgdV3bOFLG2WE-s11AcCGTD';
 @endphp
 <script>
@@ -242,7 +243,7 @@ $client = 'ARw2VtkTvo3aT7DILgPWeSUPjMK_AS5RlMKkUmB78O8rFCJcfX6jFSmTDpgdV3bOFLG2W
 				transactions: [{
 					amount: {
 						total: '{{ $total_price }}',
-						currency: 'USD'
+						currency: 'PHP'
 					}
 				}]
 			});
@@ -252,5 +253,5 @@ $client = 'ARw2VtkTvo3aT7DILgPWeSUPjMK_AS5RlMKkUmB78O8rFCJcfX6jFSmTDpgdV3bOFLG2W
 			return actions.redirect();
 		}
 	}, '#paypal-button');
-</script>
+</script> --}}
 @endsection

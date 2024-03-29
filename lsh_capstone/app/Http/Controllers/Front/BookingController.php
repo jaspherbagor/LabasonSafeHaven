@@ -142,38 +142,38 @@ class BookingController extends Controller
         return view('front.checkout');
     }
 
-    // public function payment(Request $request)
-    // {
-    //     if(!Auth::guard('customer')->check()) {
-    //         return redirect()->back()->with('error', 'You must have to login in order to checkout');
-    //     }
+    public function payment(Request $request)
+    {
+        // if(!Auth::guard('customer')->check()) {
+        //     return redirect()->back()->with('error', 'You must have to login in order to checkout');
+        // }
 
-    //     if(!session()->has('cart_room_id')) {
-    //         return redirect()->back()->with('error', 'There is no item in the cart');
-    //     }
+        // if(!session()->has('cart_room_id')) {
+        //     return redirect()->back()->with('error', 'There is no item in the cart');
+        // }
 
-    //     $request->validate([
-    //         'billing_name' => 'required',
-    //         'billing_email' => 'required|email',
-    //         'billing_phone' => 'required',
-    //         'billing_country' => 'required',
-    //         'billing_address' => 'required',
-    //         'billing_state' => 'required',
-    //         'billing_city' => 'required',
-    //         'billing_zip' => 'required'
-    //     ]);
+        // $request->validate([
+        //     'billing_name' => 'required',
+        //     'billing_email' => 'required|email',
+        //     'billing_phone' => 'required',
+        //     'billing_country' => 'required',
+        //     'billing_address' => 'required',
+        //     'billing_state' => 'required',
+        //     'billing_city' => 'required',
+        //     'billing_zip' => 'required'
+        // ]);
 
-    //     session()->put('billing_name',$request->billing_name);
-    //     session()->put('billing_email',$request->billing_email);
-    //     session()->put('billing_phone',$request->billing_phone);
-    //     session()->put('billing_country',$request->billing_country);
-    //     session()->put('billing_address',$request->billing_address);
-    //     session()->put('billing_state',$request->billing_state);
-    //     session()->put('billing_city',$request->billing_city);
-    //     session()->put('billing_zip',$request->billing_zip);
+        session()->put('billing_name',$request->billing_name);
+        session()->put('billing_email',$request->billing_email);
+        session()->put('billing_phone',$request->billing_phone);
+        session()->put('billing_country',$request->billing_country);
+        session()->put('billing_address',$request->billing_address);
+        session()->put('billing_province',$request->billing_province);
+        session()->put('billing_city',$request->billing_city);
+        session()->put('billing_zip',$request->billing_zip);
 
-    //     return view('front.payment');
-    // }
+        return view('front.payment');
+    }
 
     // public function paypal($final_price)
     // {
