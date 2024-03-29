@@ -73,7 +73,17 @@
                 </select>
 
                 <div class="stripe mt_20">
-                    <h4>Pay with Stripe</h4>
+                    <h4>Pay with Cards</h4>
+                    <p>Accepted Cards: </p>
+                    <ol class="text-success">
+                        <li>American Express</li>
+                        <li>China UnionPay (CUP)</li>
+                        <li>Discover & Diners Club</li>
+                        <li>eftpos Australia</li>
+                        <li>Japan Credit Bureau (JCB)</li>
+                        <li>Mastercard</li>
+                        <li>Visa</li>
+                    </ol>
                     @php
                     $cents = $total_price*100;
                     $customer_email = Auth::guard('customer')->user()->email;
