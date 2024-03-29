@@ -73,6 +73,7 @@ Route::get('/checkout', [BookingController::class, 'checkout'])->name('checkout'
 
 Route::post('/payment', [BookingController::class, 'payment'])->name('payment');
 
+Route::post('/payment/stripe/{price}', [BookingController::class, 'stripe'])->name('stripe');
 
 
 /* Customer Routes */
