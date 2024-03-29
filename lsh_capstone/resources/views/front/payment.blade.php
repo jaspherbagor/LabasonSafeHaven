@@ -69,14 +69,8 @@
                 <h4>Make Payment</h4>
                 <select name="payment_method" class="form-control select2" id="paymentMethodChange" autocomplete="off">
                     <option value="">Select Payment Method</option>
-                    <option value="PayPal">PayPal</option>
-                    <option value="Stripe">Stripe</option>
+                    <option value="Stripe">Cards</option>
                 </select>
-
-                <div class="paypal mt_20">
-                    <h4>Pay with PayPal</h4>
-                    <div id="paypal-button"></div>
-                </div>
 
                 <div class="stripe mt_20">
                     <h4>Pay with Stripe</h4>
@@ -95,7 +89,7 @@
                             data-name="{{ env('APP_NAME') }}"
                             data-description=""
                             data-image="{{ asset('stripe.png') }}"
-                            data-currency="usd"
+                            data-currency="php"
                             data-email="{{ $customer_email }}"
                         >
                         </script> --}}
@@ -107,28 +101,28 @@
                 <div class="inner">
                     <h4 class="mb_10">Billing Info</h4>
                     <div>
-                        Name: <span class="fw-bold">{{ session()->get('billing_name') }}</span>
+                        Name: <span class="text-success">{{ session()->get('billing_name') }}</span>
                     </div>
                     <div>
-                        Email: <span class="fw-bold">{{ session()->get('billing_email') }}</span>
+                        Email: <span class="text-success">{{ session()->get('billing_email') }}</span>
                     </div>
                     <div>
-                        Phone: <span class="fw-bold">{{ session()->get('billing_phone') }}</span>
+                        Phone: <span class="text-success">{{ session()->get('billing_phone') }}</span>
                     </div>
                     <div>
-                        Country: <span class="fw-bold">{{ session()->get('billing_country') }}</span>
+                        Country: <span class="text-success">{{ session()->get('billing_country') }}</span>
                     </div>
                     <div>
-                        Address: <span class="fw-bold">{{ session()->get('billing_address') }}</span>
+                        Address: <span class="text-success">{{ session()->get('billing_address') }}</span>
                     </div>
                     <div>
-                        City: <span class="fw-bold">{{ session()->get('billing_city') }}</span>
+                        City: <span class="texxt-success">{{ session()->get('billing_city') }}</span>
                     </div>
                     <div>
-                        Province: <span class="fw-bold">{{ session()->get('billing_province') }}</span>
+                        Province: <span class="text-success">{{ session()->get('billing_province') }}</span>
                     </div>
                     <div>
-                        Zip: <span class="fw-bold">{{ session()->get('billing_zip') }}</span>
+                        Zip: <span class="text-success">{{ session()->get('billing_zip') }}</span>
                     </div>
                 </div>
             </div>
@@ -218,40 +212,4 @@
     </div>
 </div>
 
-{{-- @php
-$client = 'ARw2VtkTvo3aT7DILgPWeSUPjMK_AS5RlMKkUmB78O8rFCJcfX6jFSmTDpgdV3bOFLG2WE-s11AcCGTD';
-@endphp
-<script>
-	paypal.Button.render({
-		env: 'sandbox',
-		client: {
-			sandbox: '{{ $client }}',
-			production: '{{ $client }}'
-		},
-		locale: 'en_US',
-		style: {
-			size: 'medium',
-			color: 'blue',
-			shape: 'rect',
-		},
-		// Set up a payment
-		payment: function (data, actions) {
-			return actions.payment.create({
-				redirect_urls:{
-					return_url: '{{ url("payment/paypal/$total_price") }}'
-				},
-				transactions: [{
-					amount: {
-						total: '{{ $total_price }}',
-						currency: 'PHP'
-					}
-				}]
-			});
-		},
-		// Execute the payment
-		onAuthorize: function (data, actions) {
-			return actions.redirect();
-		}
-	}, '#paypal-button');
-</script> --}}
 @endsection
