@@ -122,10 +122,10 @@
                         Address: <span class="fw-bold">{{ session()->get('billing_address') }}</span>
                     </div>
                     <div>
-                        Province: <span class="fw-bold">{{ session()->get('billing_province') }}</span>
+                        City: <span class="fw-bold">{{ session()->get('billing_city') }}</span>
                     </div>
                     <div>
-                        City: <span class="fw-bold">{{ session()->get('billing_city') }}</span>
+                        Province: <span class="fw-bold">{{ session()->get('billing_province') }}</span>
                     </div>
                     <div>
                         Zip: <span class="fw-bold">{{ session()->get('billing_zip') }}</span>
