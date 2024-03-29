@@ -124,7 +124,7 @@
 
                 @else
 
-                <div class="text-danger mb_30">
+                <div class="text-danger mb_30 d-flex align-items-center justify-content-center">
                     Cart is empty!
                 </div>
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BookedRoom;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
@@ -128,18 +129,18 @@ class BookingController extends Controller
     }
 
 
-    // public function checkout()
-    // {
-    //     if(!Auth::guard('customer')->check()) {
-    //         return redirect()->back()->with('error', 'You must have to login in order to checkout');
-    //     }
+    public function checkout()
+    {
+        if(!Auth::guard('customer')->check()) {
+            return redirect()->back()->with('error', 'You must have to login in order to checkout');
+        }
 
-    //     if(!session()->has('cart_room_id')) {
-    //         return redirect()->back()->with('error', 'There is no item in the cart');
-    //     }
+        if(!session()->has('cart_room_id')) {
+            return redirect()->back()->with('error', 'There is no item in the cart');
+        }
 
-    //     return view('front.checkout');
-    // }
+        return view('front.checkout');
+    }
 
     // public function payment(Request $request)
     // {
