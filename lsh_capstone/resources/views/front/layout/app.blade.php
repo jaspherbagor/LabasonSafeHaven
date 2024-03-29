@@ -105,7 +105,12 @@
                                         <li class="nav-item">
                                             <a href="{{ route('room') }}" class="nav-link">All Accommodations</a>
                                         </li>
+                                        {{-- @foreach($room_all as $item)
                                         <li class="nav-item">
+                                            <a href="{{ route('room_detail', $item->id) }}" class="nav-link">{{ $item->name }}</a>
+                                        </li>
+                                        @endforeach --}}
+                                        {{-- <li class="nav-item">
                                             <a href="room-detail.html" class="nav-link">Hotel</a>
                                         </li>
                                         <li class="nav-item">
@@ -113,7 +118,7 @@
                                         </li>
                                         <li class="nav-item">
                                             <a href="room-detail.html" class="nav-link">Boarding House</a>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </li>
                                 <li class="nav-item">

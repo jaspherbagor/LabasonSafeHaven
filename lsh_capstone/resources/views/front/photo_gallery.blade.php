@@ -22,7 +22,7 @@
                         <img src="{{ asset('uploads/'.$item->photo) }}" alt="">
                         <div class="bg"></div>
                         <div class="icon">
-                            <a href="{{ asset('uploads/'.$item->photo) }}" class="magnific"><i class="fa fa-plus"></i></a>
+                            <a href="{{ asset('uploads/'.$item->photo) }}" class="magnific"><i class="fa fa-search-plus"></i></a>
                         </div>
                     </div>
                     <div class="photo-caption">
