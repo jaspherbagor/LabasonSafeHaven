@@ -17,6 +17,7 @@
                         <div class="col-md-4">
                             <address>
                                 <strong>Invoice To</strong><br>
+                                <img src="{{ asset('uploads/'.Auth::guard('customer')->user()->photo) }}" alt="profile photo" class="w_50" ><br>
                                 {{ Auth::guard('customer')->user()->name }}<br>
                                 {{ Auth::guard('customer')->user()->address }},<br>
                                 {{ Auth::guard('customer')->user()->city }}, <br>
@@ -103,7 +104,7 @@
         </div>
         <hr class="about-print-button">
         <div class="text-md-right">
-            <a href="javascript:window.print();" class="btn btn-warning btn-icon icon-left text-white print-invoice-button"><i class="fas fa-print"></i> Print</a>
+            <a href="javascript:window.print();" class="btn btn-primary bg-website btn-icon icon-left text-white print-invoice-button"><i class="fas fa-print"></i> Print</a>
         </div>
     </div>
 </div>
