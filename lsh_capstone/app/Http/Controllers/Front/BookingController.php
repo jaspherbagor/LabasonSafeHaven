@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Mail\WebsiteMail;
 use App\Models\BookedRoom;
+use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -286,25 +288,34 @@ class BookingController extends Controller
 
         }
 
-        $subject = 'New Order';
-        $message = 'You have made an order for hotel booking. The booking information is given below: <br>';
-        $message .= '<br>Order No: '.$order_no;
-        $message .= '<br>Transaction Id: '.$transaction_id;
-        $message .= '<br>Payment Method: Stripe';
-        $message .= '<br>Paid Amount: '.$final_price;
-        $message .= '<br>Booking Date: '.date('d/m/Y').'<br>';
+        $subject = 'Thank You for Your Booking with Labason Safe Haven';
+        $message = '<p>Dear <strong>'.Auth::guard('customer')->user()->name. '</strong>,</p>';
+        $message .= '<p>Thank you for choosing Labason Safe Haven for your upcoming stay. We appreciate your trust in us and are excited to welcome you to our establishment. The booking information is given below: </p>';
+
+        $message .= '<strong>Order No</strong>: '.$order_no;
+        $message .= '<br><strong>Transaction Id</strong>: '.$transaction_id;
+        $message .= '<br><strong>Payment Method</strong>: Stripe';
+        $message .= '<br><strong>Paid Amount</strong>: ₱'.number_format($final_price, 2);
+        $message .= '<br><strong>Booking Date</strong>: '.date('d/m/Y').'<br>';
 
         for($i=0;$i<count($arr_cart_room_id);$i++) {
 
             $r_info = Room::where('id',$arr_cart_room_id[$i])->first();
 
-            $message .= '<br>Room Name: '.$r_info->name;
-            $message .= '<br>Price Per Night: $'.$r_info->price;
-            $message .= '<br>Checkin Date: '.$arr_cart_checkin_date[$i];
-            $message .= '<br>Checkout Date: '.$arr_cart_checkout_date[$i];
-            $message .= '<br>Adult: '.$arr_cart_adult[$i];
-            $message .= '<br>Children: '.$arr_cart_children[$i].'<br>';
+            $message .= '<br><strong>Room Name</strong>: '.$r_info->name;
+            $message .= '<br><strong>Price Per Night</strong>: ₱'.number_format($r_info->price, 2);
+            $message .= '<br><strong>Checkin Date</strong>: '.$arr_cart_checkin_date[$i];
+            $message .= '<br><strong>Checkout Date</strong>: '.$arr_cart_checkout_date[$i];
+            $message .= '<br><strong>Adult</strong>: '.$arr_cart_adult[$i];
+            $message .= '<br><strong>Children</strong>: '.$arr_cart_children[$i].'<br>';
         }            
+        $message .= '<p>At Labason Safe Haven, we are committed to providing you with a comfortable and memorable experience. Our team is dedicated to ensuring that your stay exceeds your expectations. </p>';
+        $message .= '<p>If you have any special requests or requirements, please feel free to let us know, and we will do our best to accommodate them.</p>';
+        $message .= '<p>Once again, thank you for choosing Labason Safe Haven. We look forward to welcoming you and providing you with exceptional hospitality.</p>';
+        $message .= 'Warm regards, <br>';
+        $message .= '<strong>Celine Lerios</strong> <br>';
+        $message .= '<strong>Chief Operating Officer</strong><br>';
+        $message .= '<strong>Labason Safe Haven</strong><br>';
 
         $customer_email = Auth::guard('customer')->user()->email;
 
@@ -325,7 +336,6 @@ class BookingController extends Controller
         session()->forget('billing_zip');
 
         return redirect()->route('home')->with('success', 'Payment is successful');
-
 
     }
 }

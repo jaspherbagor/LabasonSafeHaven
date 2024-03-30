@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('order_id');
             $table->integer('room_id');
+            $table->integer('order_no');
             $table->text('checkin_date');
             $table->text('checkout_date');
             $table->text('adult');
