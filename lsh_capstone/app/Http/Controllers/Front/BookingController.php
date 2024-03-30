@@ -201,16 +201,16 @@ class BookingController extends Controller
         $statement = DB::select("SHOW TABLE STATUS LIKE 'orders'");
         $ai_id = $statement[0]->Auto_increment;
 
-        // $obj = new Order();
-        // $obj->customer_id = Auth::guard('customer')->user()->id;
-        // $obj->order_no = $order_no;
-        // $obj->transaction_id = $transaction_id;
-        // $obj->payment_method = 'Stripe';
-        // $obj->card_last_digit = $last_4;
-        // $obj->paid_amount = $final_price;
-        // $obj->booking_date = date('d/m/Y');
-        // $obj->status = 'Completed';
-        // $obj->save();
+        $obj = new Order();
+        $obj->customer_id = Auth::guard('customer')->user()->id;
+        $obj->order_no = $order_no;
+        $obj->transaction_id = $transaction_id;
+        $obj->payment_method = 'Stripe';
+        $obj->card_last_digit = $last_4;
+        $obj->paid_amount = $final_price;
+        $obj->booking_date = date('d/m/Y');
+        $obj->status = 'Completed';
+        $obj->save();
         
         $arr_cart_room_id = array();
         $i=0;
@@ -247,44 +247,44 @@ class BookingController extends Controller
             $i++;
         }
 
-        // for($i=0;$i<count($arr_cart_room_id);$i++)
-        // {
-        //     $r_info = Room::where('id',$arr_cart_room_id[$i])->first();
-        //     $d1 = explode('/',$arr_cart_checkin_date[$i]);
-        //     $d2 = explode('/',$arr_cart_checkout_date[$i]);
-        //     $d1_new = $d1[2].'-'.$d1[1].'-'.$d1[0];
-        //     $d2_new = $d2[2].'-'.$d2[1].'-'.$d2[0];
-        //     $t1 = strtotime($d1_new);
-        //     $t2 = strtotime($d2_new);
-        //     $diff = ($t2-$t1)/60/60/24;
-        //     $sub = $r_info->price*$diff;
+        for($i=0;$i<count($arr_cart_room_id);$i++)
+        {
+            $r_info = Room::where('id',$arr_cart_room_id[$i])->first();
+            $d1 = explode('/',$arr_cart_checkin_date[$i]);
+            $d2 = explode('/',$arr_cart_checkout_date[$i]);
+            $d1_new = $d1[2].'-'.$d1[1].'-'.$d1[0];
+            $d2_new = $d2[2].'-'.$d2[1].'-'.$d2[0];
+            $t1 = strtotime($d1_new);
+            $t2 = strtotime($d2_new);
+            $diff = ($t2-$t1)/60/60/24;
+            $sub = $r_info->price*$diff;
 
-        //     $obj = new OrderDetail();
-        //     $obj->order_id = $ai_id;
-        //     $obj->room_id = $arr_cart_room_id[$i];
-        //     $obj->order_no = $order_no;
-        //     $obj->checkin_date = $arr_cart_checkin_date[$i];
-        //     $obj->checkout_date = $arr_cart_checkout_date[$i];
-        //     $obj->adult = $arr_cart_adult[$i];
-        //     $obj->children = $arr_cart_children[$i];
-        //     $obj->subtotal = $sub;
-        //     $obj->save();
+            $obj = new OrderDetail();
+            $obj->order_id = $ai_id;
+            $obj->room_id = $arr_cart_room_id[$i];
+            $obj->order_no = $order_no;
+            $obj->checkin_date = $arr_cart_checkin_date[$i];
+            $obj->checkout_date = $arr_cart_checkout_date[$i];
+            $obj->adult = $arr_cart_adult[$i];
+            $obj->children = $arr_cart_children[$i];
+            $obj->subtotal = $sub;
+            $obj->save();
 
-        //     while(1) {
-        //         if($t1>=$t2) {
-        //             break;
-        //         }
+            while(1) {
+                if($t1>=$t2) {
+                    break;
+                }
 
-        //         $obj = new BookedRoom();
-        //         $obj->booking_date = date('d/m/Y',$t1);
-        //         $obj->order_no = $order_no;
-        //         $obj->room_id = $arr_cart_room_id[$i];
-        //         $obj->save();
+                $obj = new BookedRoom();
+                $obj->booking_date = date('d/m/Y',$t1);
+                $obj->order_no = $order_no;
+                $obj->room_id = $arr_cart_room_id[$i];
+                $obj->save();
 
-        //         $t1 = strtotime('+1 day',$t1);
-        //     }
+                $t1 = strtotime('+1 day',$t1);
+            }
 
-        // }
+        }
 
         $subject = 'New Order';
         $message = 'You have made an order for hotel booking. The booking information is given below: <br>';

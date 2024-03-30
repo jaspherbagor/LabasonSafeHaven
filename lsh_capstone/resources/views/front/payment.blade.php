@@ -84,26 +84,25 @@
                         <li>Mastercard</li>
                         <li>Visa</li>
                     </ol>
-                    {{-- @php
+                    @php
                     $cents = $total_price*100;
                     $customer_email = Auth::guard('customer')->user()->email;
-                    $stripe_publishable_key = 'pk_test_51LT28GF67T3XLjgLXbAMW8YNgvDyv6Yrg7mB6yHJhfmWgLrAL79rSBPvxcbKrsKtCesqJmxlOd259nMrNx4Qlhoa00zX7rOhOq';
-                    {{ route('stripe',$total_price) }}
-                    @endphp --}}
+                    $stripe_publishable_key = config('services.stripe.publishable');
+                    @endphp
                     <form action="{{ route('stripe',$total_price) }}" method="post">
                         @csrf
-                        <button class="btn btn-primary bg-website" type="submit">Pay With Card</button>
-                        {{-- <script
+                        {{-- <button class="btn btn-primary bg-website" type="submit">Pay With Card</button> --}}
+                        <script
                             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                             data-key="{{ $stripe_publishable_key }}"
                             data-amount="{{ $cents }}"
-                            data-name="{{ env('APP_NAME') }}"
+                            data-name="{{ config('app.name') }}"
                             data-description=""
-                            data-image="{{ asset('stripe.png') }}"
+                            data-image="{{ asset('stripe_logo.png') }}"
                             data-currency="php"
                             data-email="{{ $customer_email }}"
                         >
-                        </script> --}}
+                        </script>
                     </form>
                 </div>
 
