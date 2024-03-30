@@ -91,7 +91,6 @@
                     @endphp
                     <form action="{{ route('stripe',$total_price) }}" method="post">
                         @csrf
-                        {{-- <button class="btn btn-primary bg-website" type="submit">Pay With Card</button> --}}
                         <script
                             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                             data-key="{{ $stripe_publishable_key }}"

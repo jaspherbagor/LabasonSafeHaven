@@ -13,6 +13,8 @@
 
             <li class="{{ Request::is('customer/home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('customer_home') }}"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
 
+            <li class="{{ Request::is('customer/order/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('customer_order_view') }}"><i class="fa fa-question-circle"></i> <span>Orders</span></a></li>
+
 
             {{-- <li class="nav-item dropdown {{ Request::is('admin/amenity/view') || Request::is('admin/room/view') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fa fa-building-o"></i><span>Room Section</span></a>
