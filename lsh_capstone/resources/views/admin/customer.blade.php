@@ -25,7 +25,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            @if($row->photo !== '')
+                                            @if($row->photo!= '')
                                             <img src="{{ asset('uploads/'.$row->photo) }}" alt="slide_image" class="w_100">
                                             @else
                                             <img src="{{ asset('uploads/default.png') }}" alt="slide_image" class="w_100">
@@ -35,8 +35,12 @@
                                         <td>{{ $row->email }}</td>
                                         <td>{{ $row->phone }}</td>
                                         <td class="pt_10 pb_10">
-                                            <a href="{{ route('admin_faq_edit',$row->id) }}" class="btn btn-primary mb-md-0 mb-1">Edit</a>
-                                            <a href="{{ route('admin_faq_delete',$row->id) }}" class="btn btn-danger" onClick="return confirm('Are you sure?');">Delete</a>
+                                            @if($row->status == 1)
+                                            <a href="{{ route('admin_customer_change_status', $row->id) }}" class="btn btn-success mb-md-0 mb-1">Active</a>
+                                            @else
+                                            <a href="{{ route('admin_customer_change_status', $row->id) }}" class="btn btn-danger mb-md-0 mb-1">Pending</a>
+                                            @endif
+                                            
                                         </td>
                                         
                                     </tr>

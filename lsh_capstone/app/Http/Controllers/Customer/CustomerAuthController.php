@@ -33,7 +33,7 @@ class CustomerAuthController extends Controller
         if(Auth::guard('customer')->attempt($credential)) {
             return redirect()->route('customer_home');
         } else {            
-            return redirect()->route('customer_login')->with('error', 'Information is not correct!');
+            return redirect()->route('customer_login')->with('error', 'Invalid credentials!');
         }
     }
 
