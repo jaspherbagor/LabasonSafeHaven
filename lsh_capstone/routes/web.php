@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminAmenityController;
+use App\Http\Controllers\Admin\AdminCustomerController;
 use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminFeatureController;
@@ -78,7 +79,7 @@ Route::post('/payment/stripe/{price}', [BookingController::class, 'stripe'])->na
 
 
 /* Customer Routes */
-Route::get('/login', [CustomerAuthController::class, 'login'])->name('customer_login');
+Route::get('/login', [CustomerAuthController::class, 'login'])->name('customer_login')->middleware('CheckAuth');
 
 Route::post('/login-submit', [CustomerAuthController::class, 'login_submit'])->name('customer_login_submit');
 
@@ -97,7 +98,6 @@ Route::post('/forget-password-submit', [CustomerAuthController::class, 'forget_p
 Route::get('/reset-password/{token}/{email}', [CustomerAuthController::class, 'reset_password'])->name('customer_reset_password');
 
 Route::post('/reset-password-submit', [CustomerAuthController::class, 'reset_password_submit'])->name('customer_reset_password_submit');
-
 
 
 
@@ -138,6 +138,8 @@ Route::group(['middleware' => ['admin:admin']], function() {
     Route::post('/admin/edit-profile-submit', [AdminProfileController::class, 'profileSubmit'])->name('admin_profile_submit');
 
     Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home');
+
+    Route::get('/admin/customer', [AdminCustomerController::class, 'index'])->name('admin_customer');
 
     Route::get('/admin/slide/view', [AdminSlideController::class, 'index'])->name('admin_slide_view');
     
