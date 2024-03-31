@@ -146,7 +146,7 @@ Route::group(['middleware' => ['admin:admin']], function() {
 
     Route::get('/admin/order/view', [AdminOrderController::class, 'index'])->name('admin_order_view');
 
-    Route::get('/admin/invoice/{id}', [AdminOrderController::class, 'invoice'])->name('admin_invoice');
+    Route::get('/admin/order/invoice/{id}', [AdminOrderController::class, 'invoice'])->name('admin_invoice');
 
     Route::get('/admin/slide/view', [AdminSlideController::class, 'index'])->name('admin_slide_view');
     

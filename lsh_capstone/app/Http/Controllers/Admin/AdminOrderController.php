@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class AdminOrderController extends Controller
     {
         $order = Order::where('id', $id)->first();
         $order_detail = OrderDetail::where('order_id',$id )->get();
-        return view('admin.invoice', compact('order', 'order_detail'));
+        $customer_data = Customer::where('id', $order->customer_id)->first();
+        return view('admin.invoice', compact('order', 'order_detail', 'customer_data'));
     }
 }
