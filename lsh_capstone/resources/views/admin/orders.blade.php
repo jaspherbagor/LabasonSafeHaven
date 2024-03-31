@@ -30,7 +30,7 @@
                                         <td>{{ $row->paid_amount }}</td>
                                         <td class="pt_10 pb_10">
                                             <a href="{{ route('admin_invoice',$row->id) }}" class="btn btn-primary mb-md-0 mb-1">Detail</a>
-                                            
+                                            <a href="{{ route('admin_order_delete',$row->id) }}" class="btn btn-danger mb-md-0 mb-1" onClick="return confirm('Are you sure you want to delete order?');">Delete</a>
                                         </td>
                                         
                                     </tr>
