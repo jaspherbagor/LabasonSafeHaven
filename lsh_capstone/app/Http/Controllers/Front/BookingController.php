@@ -150,24 +150,24 @@ class BookingController extends Controller
 
     public function payment(Request $request)
     {
-        // if(!Auth::guard('customer')->check()) {
-        //     return redirect()->back()->with('error', 'You must have to login in order to checkout');
-        // }
+        if(!Auth::guard('customer')->check()) {
+            return redirect()->back()->with('error', 'You must have to login in order to checkout');
+        }
 
-        // if(!session()->has('cart_room_id')) {
-        //     return redirect()->back()->with('error', 'There is no item in the cart');
-        // }
+        if(!session()->has('cart_room_id')) {
+            return redirect()->back()->with('error', 'There is no item in the cart');
+        }
 
-        // $request->validate([
-        //     'billing_name' => 'required',
-        //     'billing_email' => 'required|email',
-        //     'billing_phone' => 'required',
-        //     'billing_country' => 'required',
-        //     'billing_address' => 'required',
-        //     'billing_state' => 'required',
-        //     'billing_city' => 'required',
-        //     'billing_zip' => 'required'
-        // ]);
+        $request->validate([
+            'billing_name' => 'required',
+            'billing_email' => 'required|email',
+            'billing_phone' => 'required',
+            'billing_country' => 'required',
+            'billing_address' => 'required',
+            'billing_province' => 'required',
+            'billing_city' => 'required',
+            'billing_zip' => 'required'
+        ]);
 
         session()->put('billing_name',$request->billing_name);
         session()->put('billing_email',$request->billing_email);

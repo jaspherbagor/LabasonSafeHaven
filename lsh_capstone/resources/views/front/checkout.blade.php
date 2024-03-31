@@ -73,34 +73,58 @@
                             <div class="col-lg-6">
                                 <label for="">Name: *</label>
                                 <input type="text" class="form-control mb_15" name="billing_name" value="{{ $billing_name }}">
+                                @if($errors->has('billing_name'))
+                                <span class="text-danger">{{ $errors->first('billing_name') }}</span>
+                            @endif
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Email Address: *</label>
                                 <input type="text" class="form-control mb_15" name="billing_email" value="{{ $billing_email }}">
+                                @if($errors->has('billing_email'))
+                                <span class="text-danger">{{ $errors->first('billing_email') }}</span>
+                            @endif
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Phone Number: *</label>
                                 <input type="text" class="form-control mb_15" name="billing_phone" value="{{ $billing_phone }}">
+                                @if($errors->has('billing_phone'))
+                                <span class="text-danger">{{ $errors->first('billing_phone') }}</span>
+                            @endif
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Country: *</label>
                                 <input type="text" class="form-control mb_15" name="billing_country" value="{{ $billing_country }}">
+                                @if($errors->has('billing_country'))
+                                <span class="text-danger">{{ $errors->first('billing_country') }}</span>
+                            @endif
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Address: *</label>
                                 <input type="text" class="form-control mb_15" name="billing_address" value="{{ $billing_address }}">
+                                @if($errors->has('billing_address'))
+                                <span class="text-danger">{{ $errors->first('billing_address') }}</span>
+                            @endif
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Province: *</label>
                                 <input type="text" class="form-control mb_15" name="billing_province" value="{{ $billing_province }}">
+                                @if($errors->has('billing_province'))
+                                <span class="text-danger">{{ $errors->first('billing_province') }}</span>
+                            @endif
                             </div>
                             <div class="col-lg-6">
                                 <label for="">City: *</label>
                                 <input type="text" class="form-control mb_15" name="billing_city" value="{{ $billing_city }}">
+                                @if($errors->has('billing_city'))
+                                <span class="text-danger">{{ $errors->first('billing_city') }}</span>
+                            @endif
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Zip Code: *</label>
                                 <input type="text" class="form-control mb_15" name="billing_zip" value="{{ $billing_zip }}">
+                                @if($errors->has('billing_zip'))
+                                <span class="text-danger">{{ $errors->first('billing_zip') }}</span>
+                            @endif
                             </div>
                         </div>
                     </div>
