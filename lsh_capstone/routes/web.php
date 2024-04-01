@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminRoomController;
+use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
@@ -139,6 +140,10 @@ Route::group(['middleware' => ['admin:admin']], function() {
     Route::post('/admin/edit-profile-submit', [AdminProfileController::class, 'profileSubmit'])->name('admin_profile_submit');
 
     Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home');
+
+    Route::get('/admin/setting', [AdminSettingController::class, 'index'])->name('admin_setting');
+
+    Route::post('/admin/setting/update', [AdminSettingController::class, 'update'])->name('admin_setting_update');
 
     Route::get('/admin/customer', [AdminCustomerController::class, 'index'])->name('admin_customer');
 
