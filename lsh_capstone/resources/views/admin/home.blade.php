@@ -6,8 +6,8 @@
 <div class="row">
     <div class="col-lg-4 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
-            <div class="card-icon bg-success">
-                <i class="fa fa-check-circle"></i>
+            <div class="card-icon bg-primary">
+                <i class="fa fa-cart-plus"></i>
             </div>
             <div class="card-wrap">
                 <div class="card-header">
@@ -21,8 +21,8 @@
     </div>
     <div class="col-lg-4 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
-            <div class="card-icon bg-warning">
-                <i class="fa fa-clock-o"></i>
+            <div class="card-icon bg-danger">
+                <i class="fa fa-shopping-cart"></i>
             </div>
             <div class="card-wrap">
                 <div class="card-header">
@@ -36,8 +36,8 @@
     </div>
     <div class="col-lg-4 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
-            <div class="card-icon bg-primary">
-                <i class="fa fa-users"></i>
+            <div class="card-icon bg-warning">
+                <i class="fa fa-user-plus"></i>
             </div>
             <div class="card-wrap">
                 <div class="card-header">
@@ -51,8 +51,8 @@
     </div>
     <div class="col-lg-4 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
-            <div class="card-icon bg-danger">
-                <i class="fa fa-users"></i>
+            <div class="card-icon bg-success">
+                <i class="fa fa-user"></i>
             </div>
             <div class="card-wrap">
                 <div class="card-header">
@@ -66,8 +66,8 @@
     </div>
     <div class="col-lg-4 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
-            <div class="card-icon bg-success">
-                <i class="fa fa-check-circle"></i>
+            <div class="card-icon bg-primary">
+                <i class="fa fa-home"></i>
             </div>
             <div class="card-wrap">
                 <div class="card-header">
@@ -81,8 +81,8 @@
     </div>
     <div class="col-lg-4 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
-            <div class="card-icon bg-warning">
-                <i class="fa fa-clock-o"></i>
+            <div class="card-icon bg-danger">
+                <i class="fa fa-users"></i>
             </div>
             <div class="card-wrap">
                 <div class="card-header">
@@ -95,12 +95,12 @@
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-md-12">
         <section class="section">
             <div class="section-header">
                 <h1>Recent Orders</h1>
-                    
             </div>
         </section>
         <div class="section-body">
@@ -129,10 +129,9 @@
                                             <td>{{ $row->booking_date }}</td>
                                             <td>{{ $row->paid_amount }}</td>
                                             <td class="pt_10 pb_10">
-                                                <a href="{{ route('admin_invoice',$row->id) }}" class="btn btn-primary mb-md-0 mb-1">Detail</a>
-                                                <a href="{{ route('admin_order_delete',$row->id) }}" class="btn btn-danger mb-md-0 mb-1" onClick="return confirm('Are you sure you want to delete order?');">Delete</a>
+                                                <a href="{{ route('admin_invoice',$row->id) }}" class="btn btn-primary">Detail</a>
+                                                <a href="{{ route('admin_order_delete',$row->id) }}" class="btn btn-danger" onClick="return confirm('Are you sure?');">Delete</a>
                                             </td>
-                                            
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -145,4 +144,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection
