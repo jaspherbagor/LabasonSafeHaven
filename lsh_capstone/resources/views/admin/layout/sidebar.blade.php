@@ -6,15 +6,16 @@
             </a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{ route('admin_home') }}"></a>
+            <a href="{{ route('home') }}"></a>
         </div>
 
         <ul class="sidebar-menu">
 
             <li class="{{ Request::is('admin/home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home') }}"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
+            <li class="{{ Request::is('admin/edit-profile') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_profile') }}"><i class="fa fa-user-circle-o"></i> <span>Edit Profile</span></a></li>
             <li class="{{ Request::is('admin/setting') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_setting') }}"><i class="fa  fa-cogs"></i> <span>Setting</span></a></li>
 
-            <li class="{{ Request::is('admin/datewise-rooms') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_datewise_rooms') }}"><i class="fa  fa-cogs"></i> <span>Datewise Rooms</span></a></li>
+            <li class="{{ Request::is('admin/datewise-rooms') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_datewise_rooms') }}"><i class="fa fa-calendar"></i> <span>Datewise Rooms</span></a></li>
 
 
             <li class="nav-item dropdown {{ Request::is('admin/amenity/view') || Request::is('admin/room/view') ? 'active' : '' }}">
@@ -58,7 +59,7 @@
             <li class="{{ Request::is('admin/faq/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_faq_view') }}"><i class="fa fa-question-circle"></i> <span>FAQs</span></a></li>
 
             <li class="nav-item dropdown {{ Request::is('admin/subscriber/show') || Request::is('admin/subscriber/send-email') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fa fa-user"></i><span>Subscribers</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fa fa-user-secret"></i><span>Subscribers</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/subscriber/show') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_subscriber_show') }}"><i class="fa fa-angle-right"></i>All Subscribers</a></li>
                     <li class="{{ Request::is('admin/subscriber/send-email') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_subscriber_send_email') }}"><i class="fa fa-angle-right"></i>Send Email</a></li>
