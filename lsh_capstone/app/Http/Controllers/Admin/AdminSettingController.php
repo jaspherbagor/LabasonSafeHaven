@@ -19,7 +19,7 @@ class AdminSettingController extends Controller
         $obj = Setting::where('id',1)->first();
         if($request->hasFile('logo')) {
             $request->validate([
-                'logo' => 'image|mimes:jpg,jpeg,png,gif'
+                'logo' => 'image|mimes:jpg,jpeg,png,gif,webp,svg|max:5120'
             ]);
             unlink('uploads/'.$obj->logo);
             $ext = $request->file('logo')->extension();
@@ -29,7 +29,7 @@ class AdminSettingController extends Controller
         }
         if($request->hasFile('favicon')) {
             $request->validate([
-                'favicon' => 'image|mimes:jpg,jpeg,png,gif'
+                'favicon' => 'image|mimes:jpg,jpeg,png,gif,webp,svg|max:5120'
             ]);
             unlink('uploads/'.$obj->favicon);
             $ext = $request->file('favicon')->extension();
