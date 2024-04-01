@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <title>Labason Safe Haven</title>        
 		
-        <link rel="icon" type="image/png" href="{{ asset('uploads/lsh_favicon_front.svg') }}">
+        <link rel="icon" type="image/png" href="{{ asset('uploads/'.$global_setting_data->favicon) }}">
 
         @include('front.layout.styles')
         @include('front.layout.scripts')
@@ -18,15 +18,68 @@
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 
         {{-- Oswald Google Font CDN --}}
-        
+
         <!-- Google Analytics -->
-        <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-84213520-6"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ $global_setting_data->analytic_id }}"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'UA-84213520-6');
-        </script> -->
+            gtag('config', '{{ $global_setting_data->analytic_id }}');
+        </script>
+        
+        <style>
+            .main-nav nav .navbar-nav .nav-item a:hover,
+            .main-nav nav .navbar-nav .nav-item:hover a,
+            .slide-carousel.owl-carousel .owl-nav .owl-prev:hover, 
+            .slide-carousel.owl-carousel .owl-nav .owl-next:hover,
+            .home-feature .inner .icon i,
+            .home-rooms .inner .text .price,
+            .home-rooms .inner .text .button a,
+            .blog-item .inner .text .button a,
+            .room-detail-carousel.owl-carousel .owl-nav .owl-prev:hover, 
+            .room-detail-carousel.owl-carousel .owl-nav .owl-next:hover {
+                color: {{ $global_setting_data->theme_color_1 }};
+            }
+
+            .main-nav nav .navbar-nav .nav-item .dropdown-menu li a:hover,
+            .primary-color {
+                color: {{ $global_setting_data->theme_color_1 }}!important;
+            }
+
+            .testimonial-carousel .owl-dots .owl-dot,
+            .footer ul.social li a,
+            .footer input[type="submit"],
+            .scroll-top,
+            .room-detail .right .widget .book-now {
+                background-color: {{ $global_setting_data->theme_color_1 }};
+            }
+
+            .slider .text .button a,
+            .search-section button[type="submit"],
+            .home-rooms .big-button a,
+            .bg-website {
+                background-color: {{ $global_setting_data->theme_color_1 }}!important;
+            }
+
+            .slider .text .button a,
+            .slide-carousel.owl-carousel .owl-nav .owl-prev:hover, 
+            .slide-carousel.owl-carousel .owl-nav .owl-next:hover,
+            .search-section button[type="submit"],
+            .room-detail-carousel.owl-carousel .owl-nav .owl-prev:hover, 
+            .room-detail-carousel.owl-carousel .owl-nav .owl-next:hover,
+            .room-detail .amenity .item {
+                border-color: {{ $global_setting_data->theme_color_1 }}!important;
+            }
+
+            .home-feature .inner .icon i,
+            .home-rooms .inner .text .button a,
+            .blog-item .inner .text .button a,
+            .room-detail .amenity .item,
+            .cart .table-cart tr th {
+                background-color: {{ $global_setting_data->theme_color_2 }}!important;
+            }
+        </style>
 
     </head>
     <body>
@@ -36,8 +89,8 @@
                 <div class="row">
                     <div class="col-md-6 left-side">
                         <ul>
-                            <li class="phone-text">0936-256-3482</li>
-                            <li class="email-text">contact@lsh.space</li>
+                            <li class="phone-text">{{ $global_setting_data->top_bar_phone }}</li>
+                            <li class="email-text">{{ $global_setting_data->top_bar_email }}</li>
                         </ul>
                     </div>
                     <div class="col-md-6 right-side">
@@ -84,7 +137,7 @@
             <!-- Menu For Mobile Device -->
             <div class="mobile-nav">
                 <a href="{{ route('home') }}" class="logo">
-                    <img src="{{ asset('uploads/logo.png') }}" alt="">
+                    <img src="{{ asset('uploads/'.$global_setting_data->logo) }}" alt="">
                 </a>
             </div>
         
@@ -93,7 +146,7 @@
                 <div class="container">
                     <nav class="navbar navbar-expand-md navbar-light">
                         <a class="navbar-brand" href="{{ route('home') }}">
-                            <img src="{{ asset('uploads/logo.png') }}" alt="">
+                            <img src="{{ asset('uploads/'.$global_setting_data->logo ) }}" alt="">
                         </a>
                         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto">        
@@ -113,20 +166,11 @@
                                         <li class="nav-item">
                                             <a href="{{ route('room') }}" class="nav-link">All Accommodations</a>
                                         </li>
-                                        {{-- @foreach($room_all as $item)
+                                        @foreach($global_room_data as $item)
                                         <li class="nav-item">
                                             <a href="{{ route('room_detail', $item->id) }}" class="nav-link">{{ $item->name }}</a>
                                         </li>
-                                        @endforeach --}}
-                                        {{-- <li class="nav-item">
-                                            <a href="room-detail.html" class="nav-link">Hotel</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="room-detail.html" class="nav-link">Apartment</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="room-detail.html" class="nav-link">Boarding House</a>
-                                        </li> --}}
+                                        @endforeach
                                     </ul>
                                 </li>
                                 <li class="nav-item">
@@ -144,9 +188,9 @@
                                         @endif
                                     </ul>
                                 </li>
-                                @if($global_page_data->blog_status === 1)
+                                @if($global_page_data->blog_status == 1)
                                 <li class="nav-item">
-                                    <a href="{{ route('blog') }}" class="nav-link">Blog</a>
+                                    <a href="{{ route('blog') }}" class="nav-link">{{ $global_page_data->blog_heading }}</a>
                                 </li>
                                 @endif
                                 @if($global_page_data->contact_status === 1)
@@ -218,8 +262,7 @@
                                     <i class="fa fa-map-marker"></i>
                                 </div>
                                 <div class="right">
-                                    Tandang Sora St.,<br>
-                                    Labason, Zamboanga del Norte, 7117
+                                    {{ $global_setting_data->footer_address }}
                                 </div>
                             </div>
                             <div class="list-item">
@@ -227,7 +270,7 @@
                                     <i class="fa fa-volume-control-phone"></i>
                                 </div>
                                 <div class="right">
-                                    contact@lsh.space
+                                    {{ $global_setting_data->footer_email }}
                                 </div>
                             </div>
                             <div class="list-item">
@@ -235,7 +278,7 @@
                                     <i class="fa fa-envelope-o"></i>
                                 </div>
                                 <div class="right">
-                                    0936-256-3482
+                                    {{ $global_setting_data->footer_phone }}
                                 </div>
                             </div>
                             <ul class="social">
@@ -272,7 +315,7 @@
         </div>
 
         <div class="copyright">
-            Copyright 2024, Labason Safe Haven. All Rights Reserved.
+            {{ $global_setting_data->copyright }}
         </div>
      
         <div class="scroll-top">
