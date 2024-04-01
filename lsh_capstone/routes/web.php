@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminAmenityController;
 use App\Http\Controllers\Admin\AdminCustomerController;
+use App\Http\Controllers\Admin\AdminDatewiseRoomController;
 use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminFeatureController;
@@ -142,6 +143,10 @@ Route::group(['middleware' => ['admin:admin']], function() {
     Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home');
 
     Route::get('/admin/setting', [AdminSettingController::class, 'index'])->name('admin_setting');
+
+    Route::get('/admin/datewise-rooms', [AdminDatewiseRoomController::class, 'index'])->name('admin_datewise_rooms');
+
+    Route::post('/admin/datewise-rooms/submit', [AdminDatewiseRoomController::class, 'show'])->name('admin_datewise_rooms_submit');
 
     Route::post('/admin/setting/update', [AdminSettingController::class, 'update'])->name('admin_setting_update');
 
