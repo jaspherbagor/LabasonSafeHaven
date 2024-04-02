@@ -133,7 +133,7 @@
 @endif
 
 @if($global_setting_data->home_testimonial_status == 'Show')
-<div class="testimonial" style="background-image: url(uploads/slide2.jpg)">
+<div class="testimonial" style="background-image: url(uploads/slide1.jpg)">
     <div class="bg"></div>
     <div class="container">
         <div class="row">
