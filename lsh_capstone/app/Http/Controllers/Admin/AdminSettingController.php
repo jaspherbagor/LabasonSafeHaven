@@ -8,15 +8,20 @@ use App\Models\Setting;
 
 class AdminSettingController extends Controller
 {
+    // Method to display the settings
     public function index()
     {
         $setting_data = Setting::where('id',1)->first();
         return view('admin.setting', compact('setting_data'));
     }
 
+    // Method to update the settings
     public function update(Request $request)
     {
+        // Retrieve the setting object
         $obj = Setting::where('id',1)->first();
+
+        // Handle the logo update if a new one is uploaded
         if($request->hasFile('logo')) {
             $request->validate([
                 'logo' => 'image|mimes:jpg,jpeg,png,gif,webp,svg|max:5120'
@@ -27,6 +32,8 @@ class AdminSettingController extends Controller
             $request->file('logo')->move('uploads/',$final_name);
             $obj->logo = $final_name;
         }
+
+        // Handle the favicon update if a new one is uploaded
         if($request->hasFile('favicon')) {
             $request->validate([
                 'favicon' => 'image|mimes:jpg,jpeg,png,gif,webp,svg|max:5120'
@@ -38,6 +45,7 @@ class AdminSettingController extends Controller
             $obj->favicon = $final_name;
         }
 
+        // Update the remaining settings
         $obj->top_bar_phone = $request->top_bar_phone;
         $obj->top_bar_email = $request->top_bar_email;
         $obj->home_feature_status = $request->home_feature_status;
