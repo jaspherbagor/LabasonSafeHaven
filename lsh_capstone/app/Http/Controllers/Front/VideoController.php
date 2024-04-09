@@ -8,9 +8,17 @@ use Illuminate\Http\Request;
 
 class VideoController extends Controller
 {
+    /**
+     * Display a listing of videos.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
+        // Retrieve paginated videos from the database
         $video_all = Video::paginate(12);
-        return view('front.video_gallery',compact('video_all'));
+        
+        // Return the view with video data
+        return view('front.video_gallery', compact('video_all'));
     }
 }
