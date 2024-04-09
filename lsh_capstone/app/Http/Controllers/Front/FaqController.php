@@ -8,9 +8,17 @@ use Illuminate\Http\Request;
 
 class FaqController extends Controller
 {
+    /**
+     * Display a listing of frequently asked questions.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
+        // Retrieve all FAQs
         $faq_all = Faq::get();
-        return view('front.faq',compact('faq_all'));
+
+        // Return the view with FAQ data
+        return view('front.faq', compact('faq_all'));
     }
 }
