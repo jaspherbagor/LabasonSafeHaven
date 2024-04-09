@@ -8,9 +8,17 @@ use Illuminate\Http\Request;
 
 class PrivacyController extends Controller
 {
+    /**
+     * Display the privacy policy page.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
+        // Retrieve the privacy data from the database
         $privacy_data = Page::where('id', 1)->first();
-        return view('front.privacy',compact('privacy_data'));
+
+        // Return the view with privacy data
+        return view('front.privacy', compact('privacy_data'));
     }
 }
