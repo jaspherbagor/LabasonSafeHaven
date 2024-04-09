@@ -12,37 +12,41 @@ use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {
+    // Display the contact form
     public function index()
     {
         $contact_data = Page::where('id', 1)->first();
         return view('front.contact', compact('contact_data'));
     }
 
+    // Handle the submission of the contact form
     public function send_email(Request $request)
     {
-        // dd($request->name);
+        // Validate the form data
         $validator = Validator::make($request->all(),[
-            'name'=>'required',
+            'name' => 'required',
             'email' => 'required|email',
             'message' => 'required'
         ]);
 
-        if(!$validator->passes()){
-            return response()->json(['code'=>0,'error_message'=>$validator->errors()->toArray()]);
-        }else{
+        // If validation fails, return error response
+        if (!$validator->passes()) {
+            return response()->json(['code' => 0, 'error_message' => $validator->errors()->toArray()]);
+        } else {
             // Send email
             $subject = 'Contact form email';
             $message = 'Visitor email information: <br>';
-            $message .= '<br>Name: '.$request->name;
-            $message .= '<br>Email: '.$request->email;
-            $message .= '<br>Message: '.$request->message;
+            $message .= '<br>Name: ' . $request->name;
+            $message .= '<br>Email: ' . $request->email;
+            $message .= '<br>Message: ' . $request->message;
 
             $admin_data = Admin::where('id', 1)->first();
             $admin_email = $admin_data->email;
 
             Mail::to($admin_email)->send(new WebsiteMail($subject, $message));
 
-            return response()->json(['code'=>1,'success_message'=>'Email has been sent successfully!']);
+            // Return success response
+            return response()->json(['code' => 1, 'success_message' => 'Email has been sent successfully!']);
         }
     }
 }
