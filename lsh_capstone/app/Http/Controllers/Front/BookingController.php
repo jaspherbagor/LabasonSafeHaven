@@ -213,25 +213,38 @@ class BookingController extends Controller
 
     public function stripe(Request $request,$final_price)
     {
+        // Retrieve the Stripe secret key from the config
         $stripe_secret_key = config('services.stripe.secret');
-        $cents = $final_price*100;
+        
+        // Convert final price to cents
+        $cents = $final_price * 100;
+        
+        // Set the Stripe API key
         Stripe\Stripe::setApiKey($stripe_secret_key);
-        $response = Stripe\Charge::create ([
+        
+        // Create a charge using Stripe
+        $response = Stripe\Charge::create([
             "amount" => $cents,
             "currency" => "php",
             "source" => $request->stripeToken,
             "description" => env('APP_NAME')
         ]);
 
+        // Serialize the Stripe response to JSON
         $responseJson = $response->jsonSerialize();
+        
+        // Retrieve transaction ID and last 4 digits of the card
         $transaction_id = $responseJson['balance_transaction'];
         $last_4 = $responseJson['payment_method_details']['card']['last4'];
-
+        
+        // Generate a unique order number
         $order_no = time();
-
+        
+        // Get the auto-increment ID for the orders table
         $statement = DB::select("SHOW TABLE STATUS LIKE 'orders'");
         $ai_id = $statement[0]->Auto_increment;
 
+        // Create a new Order record
         $obj = new Order();
         $obj->customer_id = Auth::guard('customer')->user()->id;
         $obj->order_no = $order_no;
@@ -243,53 +256,57 @@ class BookingController extends Controller
         $obj->status = 'Completed';
         $obj->save();
         
+        // Copy cart session data to arrays
         $arr_cart_room_id = array();
-        $i=0;
-        foreach(session()->get('cart_room_id') as $value) {
+        $i = 0;
+        foreach (session()->get('cart_room_id') as $value) {
             $arr_cart_room_id[$i] = $value;
             $i++;
         }
 
         $arr_cart_checkin_date = array();
-        $i=0;
-        foreach(session()->get('cart_checkin_date') as $value) {
+        $i = 0;
+        foreach (session()->get('cart_checkin_date') as $value) {
             $arr_cart_checkin_date[$i] = $value;
             $i++;
         }
 
         $arr_cart_checkout_date = array();
-        $i=0;
-        foreach(session()->get('cart_checkout_date') as $value) {
+        $i = 0;
+        foreach (session()->get('cart_checkout_date') as $value) {
             $arr_cart_checkout_date[$i] = $value;
             $i++;
         }
 
         $arr_cart_adult = array();
-        $i=0;
-        foreach(session()->get('cart_adult') as $value) {
+        $i = 0;
+        foreach (session()->get('cart_adult') as $value) {
             $arr_cart_adult[$i] = $value;
             $i++;
         }
 
         $arr_cart_children = array();
-        $i=0;
-        foreach(session()->get('cart_children') as $value) {
+        $i = 0;
+        foreach (session()->get('cart_children') as $value) {
             $arr_cart_children[$i] = $value;
             $i++;
         }
 
-        for($i=0;$i<count($arr_cart_room_id);$i++)
-        {
-            $r_info = Room::where('id',$arr_cart_room_id[$i])->first();
-            $d1 = explode('/',$arr_cart_checkin_date[$i]);
-            $d2 = explode('/',$arr_cart_checkout_date[$i]);
+        // Process each cart item
+        for ($i = 0; $i < count($arr_cart_room_id); $i++) {
+            // Retrieve room information
+            $r_info = Room::where('id', $arr_cart_room_id[$i])->first();
+            // Calculate duration and subtotal
+            $d1 = explode('/', $arr_cart_checkin_date[$i]);
+            $d2 = explode('/', $arr_cart_checkout_date[$i]);
             $d1_new = $d1[2].'-'.$d1[1].'-'.$d1[0];
             $d2_new = $d2[2].'-'.$d2[1].'-'.$d2[0];
             $t1 = strtotime($d1_new);
             $t2 = strtotime($d2_new);
-            $diff = ($t2-$t1)/60/60/24;
-            $sub = $r_info->price*$diff;
+            $diff = ($t2 - $t1) / 60 / 60 / 24;
+            $sub = $r_info->price * $diff;
 
+            // Create a new OrderDetail record
             $obj = new OrderDetail();
             $obj->order_id = $ai_id;
             $obj->room_id = $arr_cart_room_id[$i];
@@ -301,22 +318,19 @@ class BookingController extends Controller
             $obj->subtotal = $sub;
             $obj->save();
 
-            while(1) {
-                if($t1>=$t2) {
-                    break;
-                }
-
+            // Book the room for each day
+            while ($t1 < $t2) {
                 $obj = new BookedRoom();
-                $obj->booking_date = date('d/m/Y',$t1);
+                $obj->booking_date = date('d/m/Y', $t1);
                 $obj->order_no = $order_no;
                 $obj->room_id = $arr_cart_room_id[$i];
                 $obj->save();
 
-                $t1 = strtotime('+1 day',$t1);
+                $t1 = strtotime('+1 day', $t1);
             }
-
         }
 
+        // Compose and send booking confirmation email
         $subject = 'Thank You for Your Booking with Labason Safe Haven';
         $message = '<p>Dear <strong>'.Auth::guard('customer')->user()->name. '</strong>,</p>';
         $message .= '<p>Thank you for choosing Labason Safe Haven for your upcoming stay. We appreciate your trust in us and are excited to welcome you to our establishment. The booking information is given below: </p>';
@@ -337,7 +351,8 @@ class BookingController extends Controller
             $message .= '<br><strong>Checkout Date</strong>: '.$arr_cart_checkout_date[$i];
             $message .= '<br><strong>Adult</strong>: '.$arr_cart_adult[$i];
             $message .= '<br><strong>Children</strong>: '.$arr_cart_children[$i].'<br>';
-        }            
+        }
+                    
         $message .= '<p>At Labason Safe Haven, we are committed to providing you with a comfortable and memorable experience. Our team is dedicated to ensuring that your stay exceeds your expectations. </p>';
         $message .= '<p>If you have any special requests or requirements, please feel free to let us know, and we will do our best to accommodate them.</p>';
         $message .= '<p>Once again, thank you for choosing Labason Safe Haven. We look forward to welcoming you and providing you with exceptional hospitality.</p>';
@@ -350,6 +365,7 @@ class BookingController extends Controller
 
         Mail::to($customer_email)->send(new WebsiteMail($subject,$message));
 
+        // Clear cart and billing session data
         session()->forget('cart_room_id');
         session()->forget('cart_checkin_date');
         session()->forget('cart_checkout_date');
@@ -364,6 +380,7 @@ class BookingController extends Controller
         session()->forget('billing_city');
         session()->forget('billing_zip');
 
+        // Redirect to home page with success message
         return redirect()->route('home')->with('success', 'Payment is successful');
 
     }
