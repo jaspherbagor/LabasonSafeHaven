@@ -17,54 +17,67 @@ use Stripe;
 class BookingController extends Controller
 {
     public function cart_submit(Request $request)
-    {
-        $request->validate([
-            'room_id' => 'required',
-            'checkin_checkout' => 'required',
-            'adult' => 'required'
-        ]);
+{
+    // Validate the incoming request data
+    $request->validate([
+        'room_id' => 'required',
+        'checkin_checkout' => 'required',
+        'adult' => 'required'
+    ]);
 
-        $dates = explode(' - ',$request->checkin_checkout);
-        $checkin_date = $dates[0];
-        $checkout_date = $dates[1];
+    // Split the check-in and check-out dates
+    $dates = explode(' - ', $request->checkin_checkout);
+    $checkin_date = $dates[0];
+    $checkout_date = $dates[1];
 
-        $d1 = explode('/',$checkin_date);
-        $d2 = explode('/',$checkout_date);
-        $d1_new = $d1[2].'-'.$d1[1].'-'.$d1[0];
-        $d2_new = $d2[2].'-'.$d2[1].'-'.$d2[0];
-        $t1 = strtotime($d1_new);
-        $t2 = strtotime($d2_new);
+    // Convert check-in and check-out dates to standard format
+    $d1 = explode('/', $checkin_date);
+    $d2 = explode('/', $checkout_date);
+    $d1_new = $d1[2] . '-' . $d1[1] . '-' . $d1[0];
+    $d2_new = $d2[2] . '-' . $d2[1] . '-' . $d2[0];
+    $t1 = strtotime($d1_new);
+    $t2 = strtotime($d2_new);
 
-        $cnt = 1;
-        while(1) {
-            if($t1>=$t2) {
-                break;
-            }
-            $single_date = date('d/m/Y',$t1);
-            $total_already_booked_rooms = BookedRoom::where('booking_date',$single_date)->where('room_id',$request->room_id)->count();
-
-            $arr = Room::where('id',$request->room_id)->first();
-            $total_allowed_rooms = $arr->total_rooms;
-
-            if($total_already_booked_rooms == $total_allowed_rooms) {
-                $cnt = 0;
-                break;
-            }
-            $t1 = strtotime('+1 day',$t1);
+    // Loop to check availability for each date between check-in and check-out
+    $cnt = 1;
+    while (1) {
+        // Check if check-in date exceeds check-out date
+        if ($t1 >= $t2) {
+            break;
         }
-
-        if($cnt == 0) {
-            return redirect()->back()->with('error', 'Maximum number of this room is already booked');
-        }        
+        $single_date = date('d/m/Y', $t1);
         
-        session()->push('cart_room_id',$request->room_id);
-        session()->push('cart_checkin_date',$checkin_date);
-        session()->push('cart_checkout_date',$checkout_date);
-        session()->push('cart_adult',$request->adult);
-        session()->push('cart_children',$request->children);
+        // Count the number of rooms already booked for the selected date
+        $total_already_booked_rooms = BookedRoom::where('booking_date', $single_date)->where('room_id', $request->room_id)->count();
 
-        return redirect()->back()->with('success', 'Room is added to the cart successfully.');
+        // Retrieve total allowed rooms for the selected room
+        $arr = Room::where('id', $request->room_id)->first();
+        $total_allowed_rooms = $arr->total_rooms;
+
+        // Check if maximum rooms for the date are already booked
+        if ($total_already_booked_rooms == $total_allowed_rooms) {
+            $cnt = 0;
+            break;
+        }
+        $t1 = strtotime('+1 day', $t1);
     }
+
+    // If maximum rooms are already booked, redirect with error message
+    if ($cnt == 0) {
+        return redirect()->back()->with('error', 'Maximum number of this room is already booked');
+    }
+
+    // If room is available, add it to the cart session
+    session()->push('cart_room_id', $request->room_id);
+    session()->push('cart_checkin_date', $checkin_date);
+    session()->push('cart_checkout_date', $checkout_date);
+    session()->push('cart_adult', $request->adult);
+    session()->push('cart_children', $request->children);
+
+    // Redirect back with success message
+    return redirect()->back()->with('success', 'Room is added to the cart successfully.');
+}
+
 
     public function cart_view()
     {
