@@ -17,168 +17,173 @@ use Stripe;
 class BookingController extends Controller
 {
     public function cart_submit(Request $request)
-{
-    // Validate the incoming request data
-    $request->validate([
-        'room_id' => 'required',
-        'checkin_checkout' => 'required',
-        'adult' => 'required'
-    ]);
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'room_id' => 'required',
+            'checkin_checkout' => 'required',
+            'adult' => 'required'
+        ]);
 
-    // Split the check-in and check-out dates
-    $dates = explode(' - ', $request->checkin_checkout);
-    $checkin_date = $dates[0];
-    $checkout_date = $dates[1];
+        // Split the check-in and check-out dates
+        $dates = explode(' - ', $request->checkin_checkout);
+        $checkin_date = $dates[0];
+        $checkout_date = $dates[1];
 
-    // Convert check-in and check-out dates to standard format
-    $d1 = explode('/', $checkin_date);
-    $d2 = explode('/', $checkout_date);
-    $d1_new = $d1[2] . '-' . $d1[1] . '-' . $d1[0];
-    $d2_new = $d2[2] . '-' . $d2[1] . '-' . $d2[0];
-    $t1 = strtotime($d1_new);
-    $t2 = strtotime($d2_new);
+        // Convert check-in and check-out dates to standard format
+        $d1 = explode('/', $checkin_date);
+        $d2 = explode('/', $checkout_date);
+        $d1_new = $d1[2] . '-' . $d1[1] . '-' . $d1[0];
+        $d2_new = $d2[2] . '-' . $d2[1] . '-' . $d2[0];
+        $t1 = strtotime($d1_new);
+        $t2 = strtotime($d2_new);
 
-    // Loop to check availability for each date between check-in and check-out
-    $cnt = 1;
-    while (1) {
-        // Check if check-in date exceeds check-out date
-        if ($t1 >= $t2) {
-            break;
+        // Loop to check availability for each date between check-in and check-out
+        $cnt = 1;
+        while (1) {
+            // Check if check-in date exceeds check-out date
+            if ($t1 >= $t2) {
+                break;
+            }
+            $single_date = date('d/m/Y', $t1);
+            
+            // Count the number of rooms already booked for the selected date
+            $total_already_booked_rooms = BookedRoom::where('booking_date', $single_date)->where('room_id', $request->room_id)->count();
+
+            // Retrieve total allowed rooms for the selected room
+            $arr = Room::where('id', $request->room_id)->first();
+            $total_allowed_rooms = $arr->total_rooms;
+
+            // Check if maximum rooms for the date are already booked
+            if ($total_already_booked_rooms == $total_allowed_rooms) {
+                $cnt = 0;
+                break;
+            }
+            $t1 = strtotime('+1 day', $t1);
         }
-        $single_date = date('d/m/Y', $t1);
+
+        // If maximum rooms are already booked, redirect with error message
+        if ($cnt == 0) {
+            return redirect()->back()->with('error', 'Maximum number of this room is already booked');
+        }
+
+        // If room is available, add it to the cart session
+        session()->push('cart_room_id', $request->room_id);
+        session()->push('cart_checkin_date', $checkin_date);
+        session()->push('cart_checkout_date', $checkout_date);
+        session()->push('cart_adult', $request->adult);
+        session()->push('cart_children', $request->children);
+
+        // Redirect back with success message
+        return redirect()->back()->with('success', 'Room is added to the cart successfully.');
+    }
+
+
+    public function cart_view()
+    {
+        // Render the view for the cart page
+        return view('front.cart');
+    }
+
+    public function cart_delete($id)
+    {
+        // Create arrays to store cart session data
+        $arr_cart_room_id = array();
+        $i = 0;
         
-        // Count the number of rooms already booked for the selected date
-        $total_already_booked_rooms = BookedRoom::where('booking_date', $single_date)->where('room_id', $request->room_id)->count();
-
-        // Retrieve total allowed rooms for the selected room
-        $arr = Room::where('id', $request->room_id)->first();
-        $total_allowed_rooms = $arr->total_rooms;
-
-        // Check if maximum rooms for the date are already booked
-        if ($total_already_booked_rooms == $total_allowed_rooms) {
-            $cnt = 0;
-            break;
+        // Copy cart_room_id session data to an array
+        foreach (session()->get('cart_room_id') as $value) {
+            $arr_cart_room_id[$i] = $value;
+            $i++;
         }
-        $t1 = strtotime('+1 day', $t1);
-    }
 
-    // If maximum rooms are already booked, redirect with error message
-    if ($cnt == 0) {
-        return redirect()->back()->with('error', 'Maximum number of this room is already booked');
-    }
-
-    // If room is available, add it to the cart session
-    session()->push('cart_room_id', $request->room_id);
-    session()->push('cart_checkin_date', $checkin_date);
-    session()->push('cart_checkout_date', $checkout_date);
-    session()->push('cart_adult', $request->adult);
-    session()->push('cart_children', $request->children);
-
-    // Redirect back with success message
-    return redirect()->back()->with('success', 'Room is added to the cart successfully.');
-}
-
-
-public function cart_view()
-{
-    // Render the view for the cart page
-    return view('front.cart');
-}
-
-public function cart_delete($id)
-{
-    // Create arrays to store cart session data
-    $arr_cart_room_id = array();
-    $i = 0;
-    
-    // Copy cart_room_id session data to an array
-    foreach (session()->get('cart_room_id') as $value) {
-        $arr_cart_room_id[$i] = $value;
-        $i++;
-    }
-
-    // Similar process for other cart session data
-    // Copy cart_checkin_date session data to an array
-    $arr_cart_checkin_date = array();
-    $i = 0;
-    foreach (session()->get('cart_checkin_date') as $value) {
-        $arr_cart_checkin_date[$i] = $value;
-        $i++;
-    }
-
-    // Copy cart_checkout_date session data to an array
-    $arr_cart_checkout_date = array();
-    $i = 0;
-    foreach (session()->get('cart_checkout_date') as $value) {
-        $arr_cart_checkout_date[$i] = $value;
-        $i++;
-    }
-
-    // Copy cart_adult session data to an array
-    $arr_cart_adult = array();
-    $i = 0;
-    foreach (session()->get('cart_adult') as $value) {
-        $arr_cart_adult[$i] = $value;
-        $i++;
-    }
-
-    // Copy cart_children session data to an array
-    $arr_cart_children = array();
-    $i = 0;
-    foreach (session()->get('cart_children') as $value) {
-        $arr_cart_children[$i] = $value;
-        $i++;
-    }
-
-    // Clear the cart session data
-    session()->forget('cart_room_id');
-    session()->forget('cart_checkin_date');
-    session()->forget('cart_checkout_date');
-    session()->forget('cart_adult');
-    session()->forget('cart_children');
-
-    // Re-add cart session data except for the deleted item
-    for ($i = 0; $i < count($arr_cart_room_id); $i++) {
-        if ($arr_cart_room_id[$i] == $id) {
-            continue;
-        } else {
-            session()->push('cart_room_id', $arr_cart_room_id[$i]);
-            session()->push('cart_checkin_date', $arr_cart_checkin_date[$i]);
-            session()->push('cart_checkout_date', $arr_cart_checkout_date[$i]);
-            session()->push('cart_adult', $arr_cart_adult[$i]);
-            session()->push('cart_children', $arr_cart_children[$i]);
+        // Similar process for other cart session data
+        // Copy cart_checkin_date session data to an array
+        $arr_cart_checkin_date = array();
+        $i = 0;
+        foreach (session()->get('cart_checkin_date') as $value) {
+            $arr_cart_checkin_date[$i] = $value;
+            $i++;
         }
+
+        // Copy cart_checkout_date session data to an array
+        $arr_cart_checkout_date = array();
+        $i = 0;
+        foreach (session()->get('cart_checkout_date') as $value) {
+            $arr_cart_checkout_date[$i] = $value;
+            $i++;
+        }
+
+        // Copy cart_adult session data to an array
+        $arr_cart_adult = array();
+        $i = 0;
+        foreach (session()->get('cart_adult') as $value) {
+            $arr_cart_adult[$i] = $value;
+            $i++;
+        }
+
+        // Copy cart_children session data to an array
+        $arr_cart_children = array();
+        $i = 0;
+        foreach (session()->get('cart_children') as $value) {
+            $arr_cart_children[$i] = $value;
+            $i++;
+        }
+
+        // Clear the cart session data
+        session()->forget('cart_room_id');
+        session()->forget('cart_checkin_date');
+        session()->forget('cart_checkout_date');
+        session()->forget('cart_adult');
+        session()->forget('cart_children');
+
+        // Re-add cart session data except for the deleted item
+        for ($i = 0; $i < count($arr_cart_room_id); $i++) {
+            if ($arr_cart_room_id[$i] == $id) {
+                continue;
+            } else {
+                session()->push('cart_room_id', $arr_cart_room_id[$i]);
+                session()->push('cart_checkin_date', $arr_cart_checkin_date[$i]);
+                session()->push('cart_checkout_date', $arr_cart_checkout_date[$i]);
+                session()->push('cart_adult', $arr_cart_adult[$i]);
+                session()->push('cart_children', $arr_cart_children[$i]);
+            }
+        }
+
+        // Redirect back to the cart page with success message
+        return redirect()->back()->with('success', 'Cart item is deleted.');
     }
-
-    // Redirect back to the cart page with success message
-    return redirect()->back()->with('success', 'Cart item is deleted.');
-}
-
 
 
     public function checkout()
     {
-        if(!Auth::guard('customer')->check()) {
+        // Check if the customer is logged in
+        if (!Auth::guard('customer')->check()) {
             return redirect()->back()->with('error', 'You must have to login in order to checkout');
-        }
+    }
 
-        if(!session()->has('cart_room_id')) {
-            return redirect()->back()->with('error', 'There is no item in the cart');
-        }
+    // Check if there are items in the cart
+    if (!session()->has('cart_room_id')) {
+        return redirect()->back()->with('error', 'There is no item in the cart');
+    }
 
+    // Render the view for checkout
         return view('front.checkout');
     }
 
     public function payment(Request $request)
     {
-        if(!Auth::guard('customer')->check()) {
+        // Check if the customer is logged in
+        if (!Auth::guard('customer')->check()) {
             return redirect()->back()->with('error', 'You must have to login in order to checkout');
         }
 
-        if(!session()->has('cart_room_id')) {
+        // Check if there are items in the cart
+        if (!session()->has('cart_room_id')) {
             return redirect()->back()->with('error', 'There is no item in the cart');
         }
 
+        // Validate the payment form data
         $request->validate([
             'billing_name' => 'required',
             'billing_email' => 'required|email',
@@ -190,17 +195,20 @@ public function cart_delete($id)
             'billing_zip' => 'required'
         ]);
 
-        session()->put('billing_name',$request->billing_name);
-        session()->put('billing_email',$request->billing_email);
-        session()->put('billing_phone',$request->billing_phone);
-        session()->put('billing_country',$request->billing_country);
-        session()->put('billing_address',$request->billing_address);
-        session()->put('billing_province',$request->billing_province);
-        session()->put('billing_city',$request->billing_city);
-        session()->put('billing_zip',$request->billing_zip);
+        // Store billing information in session
+        session()->put('billing_name', $request->billing_name);
+        session()->put('billing_email', $request->billing_email);
+        session()->put('billing_phone', $request->billing_phone);
+        session()->put('billing_country', $request->billing_country);
+        session()->put('billing_address', $request->billing_address);
+        session()->put('billing_province', $request->billing_province);
+        session()->put('billing_city', $request->billing_city);
+        session()->put('billing_zip', $request->billing_zip);
 
+        // Render the view for payment
         return view('front.payment');
     }
+
 
 
     public function stripe(Request $request,$final_price)
